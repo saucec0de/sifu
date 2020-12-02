@@ -1,0 +1,74 @@
+{% if "A6" == post.selection[0]  %}
+<h2>That is correct!</h2>
+  <h3>The code has undefined behavior and thus there are no guarantees on the behavior of the code.
+    Read more here:<br><a target="_blank" rel="noopener noreferrer" href=" https://wiki.sei.cmu.edu/confluence/display/c/MSC15-C.+Do+not+depend+on+undefined+behavior"> MSC15-C. Do not depend on undefined behavior.</a>
+  </h3>
+  <h2> Next question: which among the following secure coding guidelines are not being followed by the code?
+      <br>
+          <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;font-size:20px;"><pre style="margin: 0; line-height: 125%"><span style="color: #557799">#include &lt;stdio.h&gt;</span>
+
+<span style="color: #333399; font-weight: bold">int</span> <span style="color: #0066BB; font-weight: bold">main</span>(<span style="color: #333399; font-weight: bold">void</span>) {
+    <span style="color: #333399; font-weight: bold">int</span> a[<span style="color: #0000DD; font-weight: bold">5</span>];
+    <span style="color: #333399; font-weight: bold">int</span> sum <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+    
+    <span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+    <span style="color: #008800; font-weight: bold">while</span> (i <span style="color: #333333">&lt;</span> <span style="color: #0000DD; font-weight: bold">4</span>) {
+        a[i] <span style="color: #333333">=</span> i<span style="color: #333333">++</span>;
+        sum <span style="color: #333333">+=</span> a[i];
+    }
+
+    printf(<span style="background-color: #fff0f0">&quot;%d</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\n</span><span style="background-color: #fff0f0">&quot;</span>, sum);
+        
+    <span style="color: #008800; font-weight: bold">return</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+}
+</pre></div>
+        
+        <br>
+        <form >
+          <input type="checkbox" name="choice" value="A1">
+          <a target="_blank" rel="noopener noreferrer" href="https://wiki.sei.cmu.edu/confluence/display/c/EXP30-C.+Do+not+depend+on+the+order+of+evaluation+for+side+effects">
+          EXP30-C. Do not depend on the order of evaluation for side effects
+          </a>
+          <br><input type="checkbox" name="choice" value="A2">
+          <a target="_blank" rel="noopener noreferrer" href="https://wiki.sei.cmu.edu/confluence/display/c/EXP33-C.+Do+not+read+uninitialized+memory">
+          EXP33-C. Do not read uninitialized memory
+          </a>
+          <br><input type="checkbox" name="choice" value="A3">
+          <a target="_blank" rel="noopener noreferrer" href="https://wiki.sei.cmu.edu/confluence/display/c/PRE31-C.+Avoid+side+effects+in+arguments+to+unsafe+macros">
+          PRE31-C. Avoid side effects in arguments to unsafe macros
+          </a>
+          <br><input type="checkbox" name="choice" value="A4">
+          <a target="_blank" rel="noopener noreferrer" href="https://wiki.sei.cmu.edu/confluence/display/c/ARR30-C.+Do+not+form+or+use+out-of-bounds+pointers+or+array+subscripts">
+          ARR30-C. Do not form or use out-of-bounds pointers or array subscripts
+          </a>
+        </form>
+        <br>
+        
+  <script>
+      unlockLink = "./{{chalID}}/unlock_file/{{cfg.unlock_codes[0]}}";
+      console.log("Unlock: " + unlockLink);
+      $.get( unlockLink );
+      $("#submitclick").prop("onclick", null).off("click")
+      $("#submitclick").on("click", submitAnswerStage2);
+
+      function submitAnswerStage2() {
+        var choices = document.getElementsByName("choice");
+        var sel     = {};
+
+        for( i=0; i<choices.length; i++ ) {
+          ansKey      = choices[i].value;
+          ansVal      = choices[i].checked;
+          sel[ansKey] = ansVal;
+          console.log("SubtmitAnswerStage2",i,sel);
+        }
+        $.post( "./{{chalID}}/file/done.html", { "selection": sel })
+         .done(function( retHtmlCode ) {
+             $("#main").html(retHtmlCode);
+        });
+      }
+  </script>
+        
+{% else %}
+  <!-- FAIL -->
+  Nay :-(
+{% endif %}

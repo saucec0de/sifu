@@ -1,0 +1,2 @@
+user.c:
+  - '#include "log.h"'

@@ -1,0 +1,21 @@
+{%
+if ( ("false"  == post.selection_A1[0]) and
+     ("true" == post.selection_A2[0]) and
+     ("true" == post.selection_A3[0]) and
+     ("false"  == post.selection_A4[0]) )
+%}
+  <h1>Well Done!</h1><br>
+  
+  <h2>As the names of the functions <i>fibonacci</i> and <i>sum_of_squares</i> suggest, they can potentially return very large values which can overflow when added.</h2>
+  <br>
+
+  <h2>
+    In addition, the two functions are modifying shared data (the file <samp>computations.txt</samp>) and the modifications can take place in any order since the order of evalutation is <b>unspecified behavior</b>. Thus, there is no guarantee that the first value written in the file will be from <i>fibonacci</i>.
+  </h2>
+  
+<br>
+  Here is your flag: {{cfg.flag}}
+{% else %}
+  <!-- FAIL -->
+  Nay :-(
+{% endif %}

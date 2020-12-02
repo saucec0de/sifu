@@ -1,0 +1,42 @@
+{% if "A2" == post.selection[0]  %}
+  <h2>That is correct!</h2>
+  <h2> Next question: which among the following secure coding guidelines are not being followed by the code?
+  <br>
+      <br>
+        <form >
+              <input type="checkbox" name="choice" value="A1"> EXP00-J. Do not ignore values returned by methods
+          <br><input type="checkbox" name="choice" value="A2"> IDS05-J. Use a safe subset of ASCII for file and path names
+          <br><input type="checkbox" name="choice" value="A3"> MET00-J. Validate method arguments
+          <br><input type="checkbox" name="choice" value="A4"> ERR05-J. Do not let checked exceptions escape from a finally block
+          <br><input type="checkbox" name="choice" value="A5"> FIO02-J. Detect and handle file-related errors
+        </form>
+      <br>
+        
+  <script>
+      unlockLink = "./{{chalID}}/unlock_file/{{cfg.unlock_codes[0]}}";
+      console.log("Unlock: " + unlockLink);
+      $.get( unlockLink );
+      $("#submitclick").prop("onclick", null).off("click")
+      $("#submitclick").on("click", submitAnswerStage2);
+
+      function submitAnswerStage2() {
+        var choices = document.getElementsByName("choice");
+        var sel     = {};
+
+        for( i=0; i<choices.length; i++ ) {
+          ansKey      = choices[i].value;
+          ansVal      = choices[i].checked;
+          sel[ansKey] = ansVal;
+          console.log("SubtmitAnswerStage2",i,sel);
+        }
+        $.post( "./{{chalID}}/file/done.html", { "selection": sel })
+         .done(function( retHtmlCode ) {
+             $("#main").html(retHtmlCode);
+        });
+      }
+  </script>
+        
+{% else %}
+  <!-- FAIL -->
+  Nay :-(
+{% endif %}

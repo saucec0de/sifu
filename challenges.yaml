@@ -1,0 +1,616 @@
+0000_basic:
+  category:      Sifu C/C++
+  points:        1000
+  description:   Basic Challenge
+  vulnerability: Leave me alone!
+  directory:     Challenges/C_CPP/0000_basic
+  files:         readme.txt,basic.c
+  chal_id:       e46978759b58
+  root:          template
+  root_file:     chal_files.html
+  run:           ./run.py
+  filter_files:  main, *.s, *.o
+  flag:          a6d8-3ff6-5b39-0776
+  type:          c_makefile
+  disable:       false
+  feedback:      collect
+
+0001_buffer_overflow:
+  category:      Sifu C/C++
+  points:        100
+  description:   This place is too crowded
+  vulnerability: CWE-121 * Stack-Based Buffer Overflow
+  directory:     Challenges/C_CPP/0001_buffer_overflow
+  files:         readme.txt,func.c
+  chal_id:       90fb472cd244
+  root:          template
+  root_file:     chal_files.html
+  run:           make
+  filter_files:  main, *.s, *.o
+  flag:          d031-6131-d820-dd9b
+  type:          c_makefile
+  disable:       false
+  feedback:      collect
+
+0002_info_leakage:
+  category:      Sifu C/C++
+  points:        100
+  description:   Leave no trace
+  vulnerability: CWE-14 * Information Leakage
+  directory:     Challenges/C_CPP/0002_info_leakage
+  files:         func.c
+  chal_id:       c94062933919
+  root:          template
+  root_file:     chal_files.html
+  run:           ./run.py
+  flag:          f296-5420-65a9-7fc8
+  type:          c_makefile
+  disable:       false
+  feedback:      collect
+
+0003_u_behave:
+  category:      Sifu C/C++
+  points:        100
+  description:   Crazy compilers
+  vulnerability: CWE-758 * Undefined Behaviour
+  directory:     Challenges/C_CPP/0003_u_behave
+  files:         readme.txt,func.cpp
+  chal_id:       dc3f0de6c4d4
+  root:          template
+  root_file:     chal_files.html
+  run:           make
+  flag:          72bb-b9e2-fe36-d854
+  type:          c_makefile
+  filter_files:  main, *.s, *.o, *.pp
+  disable:       false
+  feedback:      collect
+
+0004_weak_prng:
+  category:      Sifu C/C++
+  points:        100
+  description:   Shall we play a game?
+  vulnerability: CWE-338 * weak PRNG
+  directory:     Challenges/C_CPP/0004_weak_prng
+  files:         readme.txt,func.c
+  chal_id:       d754cd7ab358
+  root:          template
+  root_file:     chal_files.html
+  run:           make
+  flag:          46bb-b51d-9ced-7e31
+  type:          c_makefile
+  disable:       false
+  feedback:      collect
+  analyse:       func
+
+0005_pizza:
+  category:      Sifu C/C++
+  points:        400
+  description:   Solve the pizza challenge
+  vulnerability: Multiple 
+  directory:     Challenges/C_CPP/0005_pizza
+  files:         readme.txt,main.c,pizza.c,pizza.h,utilities.c,utilities.h
+  chal_id:       f641977e38da
+  root:          template
+  root_file:     chal_files.html
+  run:           ./run.py
+  filter_files:  main, *.s, *.o
+  flag:          040d-b8f0-5cd1-07ab
+  type:          c_makefile
+  disable:       false
+  feedback:      collect
+  analyse:       main,pizza,utilities
+
+0006_gets:
+  category:      Sifu C/C++
+  points:        100
+  description:   Danger! Danger! Will Robinson!
+  vulnerability: CWE-242 * use of inherently dangerous function
+  directory:     Challenges/C_CPP/0006_gets
+  files:         func.c
+  chal_id:       5ba10961a6b2
+  root:          template
+  root_file:     chal_files.html
+  run:           ./run.py
+  flag:          f140-557b-4c57-8e1a
+  type:          c_makefile
+  disable:       false
+  feedback:      collect
+
+0007_buffer_under_read:
+  category:      Sifu C/C++
+  points:        100
+  description:   Get index of rightmost char
+  vulnerability: CWE-127 * Buffer Under-read
+  directory:     Challenges/C_CPP/0007_buffer_under_read
+  files:         func.c
+  chal_id:       eb2e618105c7
+  root:          template
+  root_file:     chal_files.html
+  run:           ./checker.py
+  flag:          4939-6477-fec9-c264
+  type:          c_makefile
+  feedback:      collect
+  disable:       false
+
+0008_variable_overflow:
+  category:      Sifu C/C++
+  points:        100
+  description:   A pinch of salt
+  vulnerability: CWE-119 * Improper Restriction of Operations within the Bounds of a Memory Buffer
+  directory:     Challenges/C_CPP/0008_variable_overflow
+  files:         user.c,user_mgmt.h,user.h
+  chal_id:       29430162e616
+  root:          template
+  root_file:     chal_files.html
+  run:           ./run.py
+  flag:          1cb2-b0d3-42a7-840d
+  type:          c_makefile
+  disable:       false
+  feedback:      collect
+
+0009_power_mod:
+  category:      Sifu C/C++
+  points:        100
+  description:   Power mod
+  vulnerability: CWE-190 * Integer Overflow or Wraparound (Signed)
+  directory:     Challenges/C_CPP/0009_power_mod
+  files:         func.c
+  chal_id:       1bedf3d87ad6
+  root:          template
+  root_file:     chal_files.html
+  run:           ./checker.py
+  flag:          a652-826f-69ad-9af9
+  type:          c_makefile
+  feedback:      collect
+  disable:       false
+
+
+0010_max_in_array:
+  category:      Sifu C/C++
+  points:        100
+  description:   Max in array
+  vulnerability: CWE-190 * Integer Overflow or Wraparound (Unsigned)
+  directory:     Challenges/C_CPP/0010_max_in_array
+  files:         func.c
+  chal_id:       acff7a84b6fc
+  root:          template
+  root_file:     chal_files.html
+  run:           ./checker.py
+  flag:          ef4a-ed40-14e0-b906
+  type:          c_makefile
+  feedback:      collect
+  disable:       false
+
+
+0011_max_greater_by_k_in_array:
+  category:      Sifu C/C++
+  points:        100
+  description:   Max greater by K in array
+  vulnerability: CWE-190 * Integer Overflow or Wraparound (Unsigned, Challenging)
+  directory:     Challenges/C_CPP/0011_max_greater_by_k_in_array
+  files:         readme.txt,func.c
+  chal_id:       b68ba1bcc3d5
+  root:          template
+  root_file:     chal_files.html
+  run:           ./checker.py
+  flag:          0cbe-0b4e-632b-20df
+  type:          c_makefile
+  feedback:      collect
+  disable:       false
+
+
+0012_char_test:
+  category:      Sifu C/C++
+  points:        100
+  description:   Letter test
+  vulnerability: Use getchar properly
+  directory:     Challenges/C_CPP/0012_char_test
+  files:         func.c
+  chal_id:       74b5bdee6e29
+  root:          template
+  root_file:     chal_files.html
+  run:           ./checker.py
+  flag:          bc9c-ea9e-ecf2-e2cc
+  type:          c_makefile
+  disable:       false
+  feedback:      collect
+
+
+0013_format_string:
+  category:      Sifu C/C++
+  points:        100
+  description:   Check String and Give Feedback
+  vulnerability: CWE-134 * Use of Externally-Controlled Format String
+  directory:     Challenges/C_CPP/0013_format_string
+  files:         func.c
+  chal_id:       9a99cdf5fdaf
+  root:          template
+  root_file:     chal_files.html
+  run:           ./checker.py
+  flag:          b26a-ab19-99a2-5a4e
+  type:          c_makefile
+  disable:       false
+
+
+0014_copy_strings:
+  category:      Sifu C/C++
+  points:        100
+  description:   Copy Strings
+  vulnerability: Unsigned Underflow
+  directory:     Challenges/C_CPP/0014_copy_strings
+  files:         func.c
+  chal_id:       0019aff90abe
+  root:          template
+  root_file:     chal_files.html
+  run:           ./checker.py
+  flag:          f24a-d499-5e0a-167d
+  type:          c_makefile
+  disable:       false
+  feedback:      collect
+
+
+0015_command_injection:
+  category:      Sifu C/C++
+  points:        100
+  description:   Switch Colour
+  vulnerability: Command Injection
+  directory:     Challenges/C_CPP/0015_command_injection
+  files:         readme.txt,func.c
+  chal_id:       79c32bc7bd37
+  root:          template
+  root_file:     chal_files.html
+  run:           ./checker.py
+  flag:          b8d0-81fb-c947-f668
+  type:          c_makefile
+  disable:       false
+  feedback:      collect
+
+0016_count_instructions:
+  category:      Sifu C/C++
+  points:        1000
+  description:   I have no time
+  vulnerability: Side-channel attack
+  directory:     Challenges/C_CPP/0016_count_instructions
+  files:         readme.txt,sort.cpp
+  chal_id:       89b711c8f356
+  root:          template
+  root_file:     chal_files.html
+  run:           ./run.py
+  filter_files:  main, *.s, *.o
+  flag:          37ec-00ee-918f-0d83
+  type:          c_makefile
+  disable:       false
+  feedback:      collect
+
+0017_dangling_reference:
+  category:      Sifu C/C++
+  points:        1000
+  description:   Complex Factory - Container class
+  vulnerability: Dangling reference, double free, destructors,....
+  directory:     Challenges/C_CPP/0017_dangling_reference
+  files:         readme.txt,factoryComplex.h,factoryComplex.cpp
+  chal_id:       7b095d4357d9
+  root:          template
+  root_file:     chal_files.html
+  run:           ./run.py
+  filter_files:  main, *.s, *.o
+  flag:          2550-236c-dd5b-e932
+  type:          c_makefile
+  disable:       false
+  feedback:      collect
+
+0018_inheritance:
+  category:      Sifu C/C++
+  points:        1000
+  description:   Inheritance can be tricky...
+  vulnerability: Memory leak due to inheritance
+  directory:     Challenges/C_CPP/0018_inheritance
+  files:         readme.txt,main.cpp
+  chal_id:       43e8f9c982e0
+  root:          template
+  root_file:     chal_files.html
+  run:           ./run.py
+  filter_files:  main, *.s, *.o
+  flag:          53e7-7131-239d-9e40
+  type:          c_makefile
+  disable:       false
+  feedback:      collect
+  unlocks:       7758c91280d4
+
+java_001:
+  category:      Sifu Java
+  points:        100
+  description:   Initial Java Challenge
+  vulnerability: TODO
+  directory:     Challenges/Java/java_001
+  files:         pom.xml,src/main/java/com/sifu/app/App.java
+  chal_id:       0dbed138b65f
+  root:          template
+  root_file:     chal_files.html
+  run:           ./run.py
+  filter_files:  main, *.s, *.o
+  flag:          fd03-bd6f-ac3d-42e0
+  type:          c_makefile
+  disable:       false
+  feedback:      collect
+
+chal_q_java_0001:
+  category:      Sifu Asks - Java
+  points:        100
+  description:   Validating user input
+  vulnerability: IDS01-J Normalize strings before validating them
+  directory:     Challenges/Java/Questions/java_001
+  chal_id:       22fce4e414ee
+  root:          challenge
+  root_file:     index.html
+  flag:          522f-8831-abec-1a64
+  allow_post:    solve.html
+  limitFile:     2
+  disable:       false
+
+chal_q_java_0002:
+  category:      Sifu Asks - Java
+  points:        100
+  description:   Application logs
+  vulnerability: IDS03-J Do not log unsanitized user input
+  directory:     Challenges/Java/Questions/java_002
+  chal_id:       a6ec77cbe773
+  root:          challenge
+  root_file:     index.html
+  flag:          7b52-9b12-1a30-0459
+  allow_post:    solve.html
+  limitFile:     2
+  disable:       false
+
+chal_q_java_0003:
+  category:      Sifu Asks - Java
+  points:        100
+  description:   File operations
+  vulnerability: EXP00-J Do not ignore values returned by methods
+  directory:     Challenges/Java/Questions/java_003
+  chal_id:       be1f4e02ad23
+  root:          challenge
+  root_file:     index.html
+  flag:          e95f-d323-b77f-7550
+  allow_post:    solve.html, stage2.html
+  allow_post:    stage2.html
+  unlock_post:   done.html
+  unlock_codes:  789d5fd6
+  limitFile:     4
+  disable:       false
+
+chal_q_0001:
+  category:      Sifu Asks
+  points:        100
+  description:   Audit vs Debugging Logs
+  vulnerability: TODO
+  directory:     Challenges/Questions/chal_q_0001
+  chal_id:       d3c16e77e083
+  root:          challenge
+  root_file:     index.html
+  flag:          fd0c-16ff-fb44-32ca
+  allow_post:    solve.html
+  allow_get:     sifu_q.js
+  limitFile:     4
+  disable:       false
+
+chal_q_0002:
+  category:      Sifu Asks
+  points:        100
+  description:   Public Key Cryptography
+  vulnerability: TODO
+  directory:     Challenges/Questions/chal_q_0002
+  chal_id:       e1e6db96cc56
+  root:          challenge
+  root_file:     index.html
+  flag:          4635-a331-5d45-884f
+  allow_post:    solve.html
+  allow_get:     index.css,chal.png
+  limitFile:     2
+  disable:       false
+
+chal_q_0003:
+  category:      Sifu Asks
+  points:        100
+  description:   Dangerous function
+  vulnerability: TODO
+  directory:     Challenges/Questions/chal_q_0003
+  chal_id:       0df30e7234b8
+  root:          challenge
+  root_file:     index.html
+  flag:          bf46-2aee-9e3d-5050
+  allow_post:    solve.html
+  limitFile:     1
+  disable:       false
+
+chal_q_0004:
+  category:      Sifu Asks
+  points:        100
+  description:   Types of Attack
+  vulnerability: TODO
+  directory:     Challenges/Questions/chal_q_0004
+  chal_id:       190c6dad09a0
+  root:          challenge
+  root_file:     index.html
+  flag:          7171-cc0c-c787-b8f9
+  allow_post:    step1.html
+  allow_get:     fig1.jpg
+  unlock_post:   done.html
+  unlock_codes:  ed3de506
+  limitFile:     4
+  disable:       false
+
+chal_q_0005:
+  category:      Sifu Asks
+  points:        100
+  description:   Password Entropy
+  vulnerability: TODO
+  directory:     Challenges/Questions/chal_q_0005
+  chal_id:       0e4b6d84afa5
+  root:          challenge
+  root_file:     index.html
+  flag:          45ae-f4cc-0796-33c4
+  allow_post:    solve.html
+  limitFile:     3
+  disable:       false
+  
+chal_q_0006:
+  category:      Sifu Asks
+  points:        100
+  description:   String Compare
+  vulnerability: Timing attack
+  directory:     Challenges/Questions/chal_q_0006
+  chal_id:       54abeac9464f
+  root:          challenge
+  root_file:     index.html
+  flag:          6be8-031f-9ffb-bcee
+  allow_post:    solve.html
+  limitFile:     3
+  disable:       false
+  
+chal_q_0007:
+  category:      Sifu Asks
+  points:        100
+  description:   Signed Overflow Addition
+  vulnerability: TODO
+  directory:     Challenges/Questions/chal_q_0007
+  chal_id:       eba7dd699737
+  root:          challenge
+  root_file:     index.html
+  flag:          2a8a-1401-e246-9b27
+  allow_post:    solve.html
+  limitFile:     3
+  disable:       false
+  
+chal_q_0008:
+  category:      Sifu Asks
+  points:        100
+  description:   Unsigned Overflow Addition
+  vulnerability: TODO 
+  directory:     Challenges/Questions/chal_q_0008
+  chal_id:       e3f89572abc3
+  root:          challenge
+  root_file:     index.html
+  flag:          8b57-f63c-b8c4-d0e1
+  allow_post:    solve.html
+  limitFile:     3
+  disable:       false
+  
+chal_q_0009:
+  category:      Sifu Asks
+  points:        100
+  description:   Encrypted Software Image
+  vulnerability: Small Block Size
+  directory:     Challenges/Questions/chal_q_0009
+  chal_id:       88f13568705f
+  root:          challenge
+  root_file:     index.html
+  flag:          ed5f-9db0-2a85-ce89
+  allow_post:    solve.html
+  limitFile:     3
+  disable:       false
+  
+chal_q_0010:
+  category:      Sifu Asks
+  points:        100
+  description:   C Program Output
+  vulnerability: Undefined Behavior
+  directory:     Challenges/Questions/chal_q_0010
+  chal_id:       cd9ec032fdf3
+  root:          challenge
+  root_file:     index.html
+  flag:          c859-320b-2da7-d982
+  allow_post:    stage2.html
+  unlock_post:   done.html
+  unlock_codes:  d1e85b02
+  limitFile:     4
+  disable:       false
+  
+chal_q_0011:
+  category:      Sifu Asks
+  points:        100
+  description:   Macro
+  vulnerability: Unsafe Macro
+  directory:     Challenges/Questions/chal_q_0011
+  chal_id:       d2aaffd9fc9b 
+  root:          challenge
+  root_file:     index.html
+  flag:          307b-dd27-8052-fda1
+  allow_post:    stage2.html
+  unlock_post:   done.html
+  unlock_codes:  b44af02d
+  limitFile:     4
+  disable:       false
+  
+chal_q_0012:
+  category:      Sifu Asks
+  points:        100
+  description:   Morning!
+  vulnerability: Returning String
+  directory:     Challenges/Questions/chal_q_0012
+  chal_id:       13f8f202e66f
+  root:          challenge
+  root_file:     index.html
+  flag:          635b-1ee0-6036-e8ff
+  allow_post:    stage2.html
+  unlock_post:   done.html
+  unlock_codes:  38120f73
+  limitFile:     4
+  disable:       false
+  
+chal_q_0013:
+  category:      Sifu Asks
+  points:        100
+  description:   Get Month
+  vulnerability: Reserved Identifier, Array Bounds
+  directory:     Challenges/Questions/chal_q_0013
+  chal_id:       5200592a76f1
+  root:          challenge
+  root_file:     index.html
+  flag:          354b-df83-b5da-5aa6
+  allow_post:    solve.html
+  limitFile:     3
+  disable:       false
+  
+chal_q_0014:
+  category:      Sifu Asks
+  points:        100
+  description:   Fibonacci and Sum
+  vulnerability: Unspecified Behaviour, Integer Overflow
+  directory:     Challenges/Questions/chal_q_0014
+  chal_id:       c2a55f751e8e
+  root:          challenge
+  root_file:     index.html
+  flag:          8ca6-8746-eb43-b295
+  allow_post:    solve.html
+  limitFile:     3
+  disable:       false
+  
+chal_q_0015:
+  category:      Sifu Asks
+  points:        100
+  description:   Order of Evaluation
+  vulnerability: Unspecified Behavior (Order of Evaluation)
+  directory:     Challenges/Questions/chal_q_0015
+  chal_id:       e42db74a1c9b
+  root:          challenge
+  root_file:     index.html
+  flag:          8625-3cd7-4373-ee19
+  allow_post:    solve.html
+  limitFile:     3
+  disable:       false
+
+chal_q_0016:
+  category:      Sifu Asks
+  points:        100
+  description:   Virtual destructor
+  vulnerability: Memory leak
+  directory:     Challenges/Questions/chal_q_0016
+  chal_id:       7758c91280d4
+  root:          challenge
+  root_file:     index.html
+  flag:          c517-77cc-07d1-3c1d
+  allow_post:    solve.html
+  limitFile:     3
+  disable:       false
+

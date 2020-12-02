@@ -1,0 +1,10 @@
+.sifu_overlay {
+    position:           absolute;
+    width:              10%;
+    opacity:            1;
+    bottom:             0;
+    right:              0;
+    margin-right:       4%;
+    margin-bottom:      1.5%;
+    border-right-width: 0px;
+}

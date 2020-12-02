@@ -1,0 +1,30 @@
+Configuration:
+  serverPort: 5000
+  serverAddr: 127.0.0.1
+  useReloader: False
+  threaded: True
+  debug: True
+  startTools: False
+  sensitiveFiles:
+    - challenges.yaml
+    - tags.yaml
+  Tools:
+    frama-c:
+      description: "Frama-C Container"
+      enabled: True
+      start: |
+        if [ ! "$(podman ps | grep framac_run)" ]; then
+          echo "Starting Frama-C Container"
+          podman run --rm -it --entrypoint=/usr/bin/bash -d -v ${PWD}:/src -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=${DISPLAY} --name framac_run framac
+          echo "Done."
+        else
+          echo "Frama-C Container: Running"
+        fi
+      stop: |
+        if [ "$(podman ps | grep framac_run)" ]; then
+          echo "Stoping Frama-C Container"
+          podman stop -t0 framac_run
+          echo "Done."
+        else
+          echo "Frama-C Container: Stopped"
+        fi

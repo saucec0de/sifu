@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Secure Coding 师父</title>
+    <link href="/static/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/navbar-fixed-top.css" rel="stylesheet">
+    <script src="/static/jquery-3.4.1-min.js"></script>
+    <script src="/static/bootstrap.min.js"></script>
+  </head>
+
+  <body style="min-height:600px">
+    <nav class="navbar navbar-light bg-light fixed-top">
+        <div class="font-weight-bold">
+          师父
+          <button onclick="submitAnswer()" class="btn bg-success my-2 my-sm-0 ml-4" type="button" id="submitclick">Submit</button>
+          <button onclick="submitReport()" class="btn bg-warning my-2 my-sm-0" type="button" id="submitload">Report Challenge</button>
+        </div>
+        <div class="ml-auto">
+          <button onclick="submitLoad()" class="btn bg-primary my-2 my-sm-0" type="button" id="submitload">Reload</button>
+          <button onclick="window.location.href='/'" class="btn btn-outline-primary my-2 my-sm-0 ml-4" type="button">Main</button>
+          <button class="btn bg-danger ml-4 my-2 my-sm-0" onclick="window.location.href='/logout'" >Logout</button>
+        </div>
+    </nav>
+    <div class="container">
+    <div style="height: 10px"></div>
+
+    <!-- input box modal dialog -->
+    <div class="container">
+      <div class="modal fade" id="inputDataModal" tabindex="-1" role="dialog" aria-labelledby="inputDataModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="inputDataModalLabel">Report Problem with a Challenge</h5>
+            </div>
+            <div class="modal-body">
+              <div class="form-group row">
+                <label for="message-text" class="col-sm-10 col-form-label">Please enter a short description of the problem</label>
+                <textarea class="form-control" id="message-text"></textarea>
+                <div class="modal-footer">
+                  <button type="button" class="btn bg-primary text-white" id="modal-btn-send">Submit</button>
+                  <button type="button" class="btn bg-secondary text-white" id="modal-btn-cancel">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+    <div id="main">
+        <h2>Out of the following 4 snippets, which implementation of <i>is_equal</i> is the most secure? Here <i>a</i> and <i>b</i> are strings that can contain sensitive information.</h2><br>
+        <h3>Note: <i>is_equal</i> returns 0 when the two strings are equal else it returns 1. Assume both strings <i>a</i> and <i>b</i> are of the same length <i>len</i>. In addition, <i>len</i> &le; <i>MAX_LEN</i>.<h3> <br>
+        
+        <ol>
+            
+            <!-- snippet 1 -->
+            <li>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;font-size:20px;"><pre style="margin: 0; line-height: 125%"><span style="color: #333399; font-weight: bold">int</span> <span style="color: #0066BB; font-weight: bold">is_equal</span>(<span style="color: #008800; font-weight: bold">const</span> <span style="color: #333399; font-weight: bold">char</span><span style="color: #333333">*</span> a, <span style="color: #008800; font-weight: bold">const</span> <span style="color: #333399; font-weight: bold">char</span><span style="color: #333333">*</span> b, <span style="color: #333399; font-weight: bold">size_t</span> len) {
+    <span style="color: #008800; font-weight: bold">for</span> (<span style="color: #333399; font-weight: bold">size_t</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; i <span style="color: #333333">&lt;</span> len ; i<span style="color: #333333">++</span>) {
+        <span style="color: #008800; font-weight: bold">if</span> (a[i] <span style="color: #333333">!=</span> b[i])
+            <span style="color: #008800; font-weight: bold">return</span> <span style="color: #0000DD; font-weight: bold">1</span>;
+    }
+    
+    <span style="color: #008800; font-weight: bold">return</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+}
+</pre></div>
+          </li>
+            
+            <!-- snippet 2 -->
+            <li>
+            <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;font-size:20px;"><pre style="margin: 0; line-height: 125%"><span style="color: #333399; font-weight: bold">int</span> <span style="color: #0066BB; font-weight: bold">is_equal</span>(<span style="color: #008800; font-weight: bold">const</span> <span style="color: #333399; font-weight: bold">char</span><span style="color: #333333">*</span> a, <span style="color: #008800; font-weight: bold">const</span> <span style="color: #333399; font-weight: bold">char</span><span style="color: #333333">*</span> b, <span style="color: #333399; font-weight: bold">size_t</span> len) {
+    <span style="color: #333399; font-weight: bold">unsigned</span> <span style="color: #333399; font-weight: bold">char</span> result <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+    
+    <span style="color: #008800; font-weight: bold">for</span> (<span style="color: #333399; font-weight: bold">size_t</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; i <span style="color: #333333">&lt;</span> len ; i<span style="color: #333333">++</span>) {
+        result <span style="color: #333333">|=</span> a[i] <span style="color: #333333">^</span> b[i];
+    }
+    
+    <span style="color: #008800; font-weight: bold">if</span> (result)
+        <span style="color: #008800; font-weight: bold">return</span> <span style="color: #0000DD; font-weight: bold">1</span>;
+    <span style="color: #008800; font-weight: bold">else</span>
+        <span style="color: #008800; font-weight: bold">return</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+}
+</pre></div>
+            </li>
+
+            <!-- snippet 3 -->
+            <li>
+ <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;font-size:20px;"><pre style="margin: 0; line-height: 125%"><span style="color: #333399; font-weight: bold">int</span> <span style="color: #0066BB; font-weight: bold">is_equal</span>(<span style="color: #008800; font-weight: bold">const</span> <span style="color: #333399; font-weight: bold">char</span><span style="color: #333333">*</span> a, <span style="color: #008800; font-weight: bold">const</span> <span style="color: #333399; font-weight: bold">char</span><span style="color: #333333">*</span> b, <span style="color: #333399; font-weight: bold">size_t</span> len) {
+    <span style="color: #333399; font-weight: bold">unsigned</span> <span style="color: #333399; font-weight: bold">char</span> result <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+    
+    <span style="color: #008800; font-weight: bold">for</span> (<span style="color: #333399; font-weight: bold">size_t</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; i <span style="color: #333333">&lt;</span> len ; i<span style="color: #333333">++</span>) {
+        result <span style="color: #333333">=</span> a[i] <span style="color: #333333">^</span> b[i];
+        
+        <span style="color: #008800; font-weight: bold">if</span> (result)
+            <span style="color: #008800; font-weight: bold">return</span> <span style="color: #0000DD; font-weight: bold">1</span>;
+    }
+        
+    <span style="color: #008800; font-weight: bold">return</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+}
+</pre></div>
+ </li>
+            
+            <!-- snippet 4 -->
+            <li>
+            <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;font-size:20px;"><pre style="margin: 0; line-height: 125%"><span style="color: #333399; font-weight: bold">int</span> <span style="color: #0066BB; font-weight: bold">is_equal</span>(<span style="color: #008800; font-weight: bold">const</span> <span style="color: #333399; font-weight: bold">char</span><span style="color: #333333">*</span> a, <span style="color: #008800; font-weight: bold">const</span> <span style="color: #333399; font-weight: bold">char</span><span style="color: #333333">*</span> b, <span style="color: #333399; font-weight: bold">size_t</span> len) {
+    <span style="color: #333399; font-weight: bold">unsigned</span> <span style="color: #333399; font-weight: bold">char</span> result <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+    <span style="color: #333399; font-weight: bold">unsigned</span> <span style="color: #333399; font-weight: bold">char</span> temp[MAX_LEN];
+    
+    <span style="color: #008800; font-weight: bold">for</span> (<span style="color: #333399; font-weight: bold">size_t</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; i <span style="color: #333333">&lt;</span> len ; i<span style="color: #333333">++</span>) {
+        temp[i] <span style="color: #333333">=</span> a[i] <span style="color: #333333">^</span> b[i];
+    }
+
+    <span style="color: #008800; font-weight: bold">for</span> (<span style="color: #333399; font-weight: bold">size_t</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; i <span style="color: #333333">&lt;</span> len; i<span style="color: #333333">++</span>) {
+        <span style="color: #008800; font-weight: bold">if</span> (temp[i])
+            <span style="color: #008800; font-weight: bold">return</span> <span style="color: #0000DD; font-weight: bold">1</span>;
+    }
+        
+    <span style="color: #008800; font-weight: bold">return</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+}
+</pre></div>
+            
+            </li>
+          </ol>
+
+        <br>
+        <form >
+            <input type="radio" name="choice" value="A1"> Snippet 1
+            <br><input type="radio" name="choice" value="A2"> Snippet 2
+            <br><input type="radio" name="choice" value="A3"> Snippet 3
+            <br><input type="radio" name="choice" value="A4"> Snippet 4
+            <br><input type="radio" name="choice" value="A5"> They are all the same security-wise, though some may be less efficient.
+        </form>
+        <br>
+        <!-- Total number of trys: {{cfg.limitFile}} -->
+    </div>
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+
+    <script>
+    var chalID  = window.location.pathname.split('/')[2];
+    var myTimer = setInterval(myTimerFunction, {{hbTimer}});
+
+    function submitLoad(){
+      location.reload()
+    }
+
+    var inputModalConfirm = function (callback) {
+      $("#modal-btn-send").on("click", function () {
+        callback(true);
+        $("#inputDataModal").modal('hide');
+        $("#modal-btn-send").off();
+        $("#modal-btn-cancel").off();
+      });
+      $("#modal-btn-cancel").on("click", function () {
+        callback(false);
+        $("#inputDataModal").modal('hide');
+        $("#modal-btn-send").off();
+        $("#modal-btn-cancel").off();
+      });
+    };
+
+    function submitReport(){
+      var textContent = "";
+      $("#message-text").val("")
+      $("#inputDataModal").modal()
+      inputModalConfirm(function (confirm) {
+        if (confirm) {
+          reportMessage = $("#message-text").val()
+          console.log("YES: " + reportMessage);
+          $.post("./" + chalID + "/report", { "usercontent": textContent, "message":reportMessage })
+            .done(function (data) {
+              $("#testid").html(data);
+            });
+        }
+      });
+    }
+
+    function submitAnswer() {
+      var chalID  = window.location.pathname.split('/')[2];
+      var radios  = document.getElementsByName("choice");
+      var i       = 0;
+      var len     = radios.length;
+      var checked = false;
+      var userAnswer;
+      
+      for( ; i < len; i++ ) {
+         if(radios[i].checked) {
+           checked    = true;
+           userAnswer = radios[i].value;
+           break;
+         }
+      } 
+      if(!checked) {
+        alert("please select choice answer");
+        return;
+      }
+      $.post( "./"+chalID+"/file/solve.html", { "selection": userAnswer })
+       .done(function( retHtmlCode ) {
+         $("#main").html(retHtmlCode);
+       });
+    }
+
+    function myTimerFunction() {
+        $.get( {url:"./"+chalID+"/hints", cache:false}, {"heartbeat":true}, function( data ) {
+            $("#hints").html(data["hints"]);
+        });
+    }
+    </script>
+</body>

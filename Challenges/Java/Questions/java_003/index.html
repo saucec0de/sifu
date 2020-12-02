@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Secure Coding 师父</title>
+    <link href="/static/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/navbar-fixed-top.css" rel="stylesheet">
+    <script src="/static/jquery-3.4.1-min.js"></script>
+    <script src="/static/bootstrap.min.js"></script>
+  </head>
+
+  <body style="min-height:600px">
+    <nav class="navbar navbar-light bg-light fixed-top">
+        <div class="font-weight-bold">
+          师父
+          <button onclick="submitAnswer()" class="btn bg-success my-2 my-sm-0 ml-4" type="button" id="submitclick">Submit</button>
+          <button onclick="submitReport()" class="btn bg-warning my-2 my-sm-0" type="button" id="submitload">Report Challenge</button>
+        </div>
+        <div class="ml-auto">
+          <button onclick="submitLoad()" class="btn bg-primary my-2 my-sm-0" type="button" id="submitload">Reload</button>
+          <button onclick="window.location.href='/'" class="btn btn-outline-primary my-2 my-sm-0 ml-4" type="button">Main</button>
+          <button class="btn bg-danger ml-4 my-2 my-sm-0" onclick="window.location.href='/logout'" >Logout</button>
+        </div>
+    </nav>
+    <div class="container">
+    <div style="height: 10px"></div>
+
+    <!-- input box modal dialog -->
+    <div class="container">
+      <div class="modal fade" id="inputDataModal" tabindex="-1" role="dialog" aria-labelledby="inputDataModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="inputDataModalLabel">Report Problem with a Challenge</h5>
+            </div>
+            <div class="modal-body">
+              <div class="form-group row">
+                <label for="message-text" class="col-sm-10 col-form-label">Please enter a short description of the problem</label>
+                <textarea class="form-control" id="message-text"></textarea>
+                <div class="modal-footer">
+                  <button type="button" class="btn bg-primary text-white" id="modal-btn-send">Submit</button>
+                  <button type="button" class="btn bg-secondary text-white" id="modal-btn-cancel">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+    <div id="main">
+      <h2>Is there any issue with this code?</h2>
+      <br>
+      <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">public</span> <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">deleteFile</span><span style="color: #333333">()</span> <span style="color: #008800; font-weight: bold">throws</span> IOException <span style="color: #333333">{</span>
+
+  File someFile <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> File<span style="color: #333333">(</span><span style="background-color: #fff0f0">&quot;someFileName.txt&quot;</span><span style="color: #333333">);</span>
+
+  <span style="color: #888888">// Do something with someFile</span>
+
+  someFile<span style="color: #333333">.</span><span style="color: #0000CC">delete</span><span style="color: #333333">();</span>
+<span style="color: #333333">}</span>
+</pre></div>
+        <br>
+        <form >
+                <input type="radio" name="choice" value="A1"> No - the code looks good.
+            <br><input type="radio" name="choice" value="A2"> Yes - not all possible errors are handled
+            <br><input type="radio" name="choice" value="A3"> Yes - the code does not consider all possible exceptions
+        </form>
+        <br>
+        <!-- Total number of trys: {{cfg.limitFile}} -->
+    </div>
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+
+    <script>
+    var chalID  = window.location.pathname.split('/')[2];
+    var myTimer = setInterval(myTimerFunction, {{hbTimer}});
+
+    function submitLoad(){
+      location.reload()
+    }
+
+    var inputModalConfirm = function (callback) {
+      $("#modal-btn-send").on("click", function () {
+        callback(true);
+        $("#inputDataModal").modal('hide');
+        $("#modal-btn-send").off();
+        $("#modal-btn-cancel").off();
+      });
+      $("#modal-btn-cancel").on("click", function () {
+        callback(false);
+        $("#inputDataModal").modal('hide');
+        $("#modal-btn-send").off();
+        $("#modal-btn-cancel").off();
+      });
+    };
+
+    function submitReport(){
+      var textContent = "";
+      $("#message-text").val("")
+      $("#inputDataModal").modal()
+      inputModalConfirm(function (confirm) {
+        if (confirm) {
+          reportMessage = $("#message-text").val()
+          console.log("YES: " + reportMessage);
+          $.post("./" + chalID + "/report", { "usercontent": textContent, "message":reportMessage })
+            .done(function (data) {
+              $("#testid").html(data);
+            });
+        }
+      });
+    }
+
+    function submitAnswer() {
+      var chalID  = window.location.pathname.split('/')[2];
+      var radios  = document.getElementsByName("choice");
+      var i       = 0;
+      var len     = radios.length;
+      var checked = false;
+      var userAnswer;
+      
+      for( ; i < len; i++ ) {
+         if(radios[i].checked) {
+           checked    = true;
+           userAnswer = radios[i].value;
+           break;
+         }
+      } 
+      if(!checked) {
+        alert("please select choice answer");
+        return;
+      }
+      $.post( "./"+chalID+"/file/stage2.html", { "selection": userAnswer })
+       .done(function( retHtmlCode ) {
+         $("#main").html(retHtmlCode);
+       });
+    }
+
+    function myTimerFunction() {
+        $.get( {url:"./"+chalID+"/hints", cache:false}, {"heartbeat":true}, function( data ) {
+            $("#hints").html(data["hints"]);
+        });
+    }
+    </script>
+</body>

@@ -1,0 +1,88 @@
+{%
+if ( ("true"  == post.selection_A1[0]) and
+     ("false" == post.selection_A2[0]) and
+     ("false" == post.selection_A3[0]) and
+     ("true"  == post.selection_A4[0]) )
+%}
+<h2>That is correct!</h2>
+<h3> The other two functions were returning an array with automatic storage duration. Read more here:<br>
+  <a target="_blank" rel="noopener noreferrer" href="https://wiki.sei.cmu.edu/confluence/display/c/DCL30-C.+Declare+objects+with+appropriate+storage+durations">
+  DCL30-C. Declare objects with appropriate storage durations
+  </a>
+</h3>
+<br>
+<h2>Now consider again the functions you selected: </h2> 
+
+      <ol>
+      <li>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;font-size:20px;"><pre style="margin: 0; line-height: 125%">
+<span style="color: #333399; font-weight: bold">char</span><span style="color: #333333">*</span> <span style="color: #0066BB; font-weight: bold">get_morning_greeting</span>(<span style="color: #333399; font-weight: bold">bool</span> english) {
+    <span style="color: #008800; font-weight: bold">if</span> (english)
+        <span style="color: #008800; font-weight: bold">return</span> <span style="background-color: #fff0f0">&quot;Good morning!&quot;</span>;
+    <span style="color: #008800; font-weight: bold">else</span>
+        <span style="color: #008800; font-weight: bold">return</span> <span style="background-color: #fff0f0">&quot;Guten Morgen!&quot;</span>;
+}
+</pre></div>
+
+      <br><li value="4">
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;font-size:20px;"><pre style="margin: 0; line-height: 125%">
+<span style="color: #333399; font-weight: bold">char</span><span style="color: #333333">*</span> <span style="color: #0066BB; font-weight: bold">get_morning_greeting</span>(<span style="color: #333399; font-weight: bold">bool</span> english) {
+    <span style="color: #008800; font-weight: bold">static</span> <span style="color: #333399; font-weight: bold">char</span> english_greeting[] <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&quot;Good morning!&quot;</span>;
+    <span style="color: #008800; font-weight: bold">static</span> <span style="color: #333399; font-weight: bold">char</span> german_greeting[] <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&quot;Guten Morgen!&quot;</span>;
+    
+    <span style="color: #008800; font-weight: bold">if</span> (english)
+        <span style="color: #008800; font-weight: bold">return</span> english_greeting;
+    <span style="color: #008800; font-weight: bold">else</span>
+        <span style="color: #008800; font-weight: bold">return</span> german_greeting;
+}
+</pre></div>
+
+      </ol>
+
+      <h2>Suppose one of the above functions will be put in a library which will then be used by outside code. Out of the above two functions, which one would be the better choice (in terms of security) to put in your library?</h2>
+        <br>
+        
+        <form >
+            <input type="radio" name="choice" value="A1"> Implementation 1
+            <br><input type="radio" name="choice" value="A2"> Implementation 4
+            <br><input type="radio" name="choice" value="A3"> Both are the same (security-wise)
+        </form>
+        <br>
+        
+  <script>
+      unlockLink = "./{{chalID}}/unlock_file/{{cfg.unlock_codes[0]}}";
+      console.log("Unlock: " + unlockLink);
+      $.get( unlockLink );
+      $("#submitclick").prop("onclick", null).off("click")
+      $("#submitclick").on("click", submitAnswerStage2);
+
+    function submitAnswerStage2() {
+      var chalID  = window.location.pathname.split('/')[2];
+      var radios  = document.getElementsByName("choice");
+      var i       = 0;
+      var len     = radios.length;
+      var checked = false;
+      var userAnswer;
+      
+      for( ; i < len; i++ ) {
+         if(radios[i].checked) {
+           checked    = true;
+           userAnswer = radios[i].value;
+           break;
+         }
+      } 
+      if(!checked) {
+        alert("please select choice answer");
+        return;
+      }
+      $.post( "./"+chalID+"/file/done.html", { "selection": userAnswer })
+       .done(function( retHtmlCode ) {
+         $("#main").html(retHtmlCode);
+       });
+    }
+  </script>
+        
+{% else %}
+  <!-- FAIL -->
+  Nay :-(
+{% endif %}

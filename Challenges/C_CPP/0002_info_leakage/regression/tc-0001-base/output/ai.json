@@ -1,0 +1,10 @@
+[
+    {
+        "tc": "TEST_100001",
+        "msg": "the stack was not properly cleaned",
+        "expect": "",
+        "seen": "",
+        "tag": "MEMSET_S_1",
+        "result": "FAIL"
+    }
+]

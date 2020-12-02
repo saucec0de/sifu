@@ -1,0 +1,97 @@
+Staring JAIL...
+Pizza Delivery Inc.
+
+You can enter the following:
+  Type LIST to see the available menu
+  Type the pizza name to add to your order
+  Type DEL to delete the last option
+  Type VIEW view your current basket
+  Type HELP to view this help
+  Type CHECKOUT to proceed to checkout
+  Type EXIT to exit this program
+
+  or just press ENTER to finish
+> 
+help
+
+You can enter the following:
+  Type LIST to see the available menu
+  Type the pizza name to add to your order
+  Type DEL to delete the last option
+  Type VIEW view your current basket
+  Type HELP to view this help
+  Type CHECKOUT to proceed to checkout
+  Type EXIT to exit this program
+
+  or just press ENTER to finish
+> 
+napoli
+
+Adding napoli to your basket... done.
+
+> 
+crudo
+
+Adding crudo to your basket... done.
+
+> 
+view
+
+Here is your current basket
+
+Cost  | Name             | Ingredients
+------+------------------+----------------------------------------------------------------------------
+8.49  | napoli           | Tomato sauce, mozzarella, oregano, anchovies                                    
+6.99  | crudo            | Tomato sauce, mozzarella and Parma ham                                          
+------+------------------+----------------------------------------------------------------------------
+
+Total Cost: 15.48
+> 
+checkout
+
+You have ordered 2 pizzas.
+Here is your total: 15.48.
+> 
+carbonara
+
+Adding carbonara to your basket... done.
+
+> 
+napoli
+
+Adding napoli to your basket... done.
+
+> 
+romana
+
+Adding romana to your basket... done.
+
+> 
+checkout
+
+You have ordered 5 pizzas.
+Here is your total: 37.85.
+> 
+view
+
+Here is your current basket
+
+Cost  | Name             | Ingredients
+------+------------------+----------------------------------------------------------------------------
+8.49  | napoli           | Tomato sauce, mozzarella, oregano, anchovies                                    
+6.99  | crudo            | Tomato sauce, mozzarella and Parma ham                                          
+7.49  | carbonara        | Tomato sauce, mozzarella, parmesan, eggs, and bacon                             
+8.49  | napoli           | Tomato sauce, mozzarella, oregano, anchovies                                    
+6.39  | romana           | Tomato sauce, mozzarella, anchovies, capers, and oregano                        
+------+------------------+----------------------------------------------------------------------------
+
+Total Cost: 37.85
+> 
+checkout
+
+You have ordered 5 pizzas.
+Here is your total: 37.85.
+> 
+exit
+
+

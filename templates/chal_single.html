@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Secure Coding 师父</title>
+    <link href="/static/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/navbar-fixed-top.css" rel="stylesheet">
+    <script src="/static/jquery-3.4.1-min.js"></script>
+    <script src="/static/bootstrap.min.js"></script>
+    <script src="/static/ace/ace.js"></script>
+    <link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAADTklEQVRYR+2XW2gUZxTHf9/M7OxuZpOYpiaNwcYkRFtN8X6hTVpoKpao0FANSvCl6kuggmChyIoPQryg1YeStpJSEK21NEVFY6CKF0QEiaCtGrVr6nVNUGuy2SQzm52VmVzIOlnjU+LDfo8zzDm/8z/f/wxHsDkm5U18ulEgVQM5jM4JxjBr797PrBF5e5/4hSRtGZ288VliprlJTKp79mgUK3+5zqAFEBuL6gdyJgGSCiQVSKjA6mI3Zx9EaO1K7NKQEf/uwwkKrWGTQLtpu2xetkJHJEbzs2hCpzsApmTIBMMmmxd4qb9tsGGO1/5YkaBwnMzN/mBGNMaKhs7BwJPSJOqXplJ1onMw4UcTFHZ+rLH+bJiLwd5hIRwA20tTONiss+p9NweadS639dFnuAX7Pvex9EjIEehtr+DQ4lR+/kfn12Y97v3MLIW9n2msPxPm/CMnxIgA0zIVSnIVXJJgdrbCxWDETnAkYNDQEqEgXaJuoY+jdwz2XO5xwHkVwfTxMj+U+ahqCHH9pXaMCLB8spum1l5a2qNsLdWoPtXJojwVAXx/pYcvClUyvYJfruk0VqRReTzEc73vbswYL/PdJxqf/tFBeb7Lbt/A/Ug4igdbMNXNgRs6FsDRgGH3daAFy4tUslMkG2Do+XauFz0aY3e/ErVlGlfaovz0t1OZEQHWfODhx6s9VL33+gAZHsGJijRWNoTI0SR2lGosrO+guzexkxwtsOx35n6EbaUa606HWTfT89oKWFVZLame7sGnCjacC3NhmIs3VLVh54Aqw+ll6ZQcaqemJMUBUDlZJcvrbIEVeOpbMr8tTqXdiFF5LGRb+lVnWIAvi1QW5Ch8c64L/3wvjf9FCDzvuwNWP1cXe9h+qTvO26mqYG2xhxVTVPwXuigaJ/NVsZtdTT38fkunNwGHAyDXJ9meXtUYoqV/or1qDljWrChUKc9X+euewa6mbtr6p+esLBn//BTe0SQO/2twOGBw6//4qegAsHxdkC5z8l6f3weO5hJ8PcPDtkvdcc/L3nVhTc8/b+s8TjC2Z2UpLClwsf+Gzp0hRVmBkn/DpAJJBd4IBcZ2Ncure+IXjNFyirlJ2Ot57tONQhrl9dw0a+8+zKx5AXE9pb68J6ViAAAAAElFTkSuQmCC" rel="icon" type="image/x-icon" />
+    <link href="/static/speech-bubble.css" rel="stylesheet">
+  </head>
+
+  <body style="min-height:600px">
+    <nav class="navbar navbar-light bg-light fixed-top">
+        <div class="font-weight-bold">
+          <a class="navbar-brand"></a> 师父
+          <button onclick="submitClick()" class="btn bg-success my-2 my-sm-0 ml-4" type="button" id="submitclick">Submit</button>
+          <button onclick="submitLoad()" class="btn bg-primary my-2 my-sm-0" type="button" id="submitload">Reload</button>
+          <button onclick="submitReport()" class="btn bg-warning my-2 my-sm-0" type="button" id="submitreport">Report Challenge</button>
+          <button onclick="fontPlus()" class="btn bg-secondary my-2 my-sm-0" type="button" id="fplus">+</button>
+          <button onclick="fontReset()" class="btn bg-secondary my-2 my-sm-0" type="button" id="fzero">0</button>
+          <button onclick="fontMinus()" class="btn bg-secondary my-2 my-sm-0" type="button" id="fminus">-</button>
+          <button onclick="window.location.href='/'" class="btn btn-outline-primary my-2 my-sm-0 ml-4" type="button">Main</button>
+        </div>
+        <div class="ml-auto">
+          <button class="btn bg-danger ml-4 my-2 my-sm-0" onclick="window.location.href='/logout'" >Logout</button>
+        </div>
+    </nav>
+    <div class="container">
+        <div style="height: 10px"></div>
+        <div class="grid" style="width:100%; display:flex">
+            <div id="editor" style="height: 400px; width: 60%; flex:1;"></div>
+            <div id="hints" style="overflow:scroll; overflow-x:hidden; height:400px; width:40%; background: lavender;font-family:monospace"></div>
+        </div>
+        <div id="log-results" style="overflow:scroll; overflow-x:hidden; height:100px; width:100%; background: khaki; font-family:monospace"></div>
+        <div id="results" style="height:20px; width:100%; background: antiquewhite; font-family:monospace"> Ready. </div>
+    </div>
+
+    <!-- input box modal dialog -->
+    <div class="container">
+      <div class="modal fade" id="inputDataModal" tabindex="-1" role="dialog" aria-labelledby="inputDataModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="inputDataModalLabel">Report Problem with a Challenge</h5>
+            </div>
+            <div class="modal-body">
+              <div class="form-group row">
+                <label for="message-text" class="col-sm-10 col-form-label">Please enter a short description of the problem</label>
+                <textarea class="form-control" id="message-text"></textarea>
+                <div class="modal-footer">
+                  <button type="button" class="btn bg-primary text-white" id="modal-btn-send">Submit</button>
+                  <button type="button" class="btn bg-secondary text-white" id="modal-btn-cancel">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+        var editor  = ace.edit("editor");
+        var chalID  = window.location.pathname.split('/')[2];
+        var myTimer = setInterval(myTimerFunction, {{hbTimer}});
+        editor.setTheme("ace/theme/monokai");
+        editor.session.setMode("ace/mode/c_cpp");
+        editor.setFontSize(12);
+  
+        $(document).ready(function(){
+            $("#submitload").click(); 
+        });
+
+        var inputModalConfirm = function (callback) {
+          $("#modal-btn-send").on("click", function () {
+            callback(true);
+            $("#inputDataModal").modal('hide');
+            $("#modal-btn-send").off();
+            $("#modal-btn-cancel").off();
+          });
+          $("#modal-btn-cancel").on("click", function () {
+            callback(false);
+            $("#inputDataModal").modal('hide');
+            $("#modal-btn-send").off();
+            $("#modal-btn-cancel").off();
+          });
+        };
+  
+        function loadHints() {
+            $.get( "./"+chalID+"/hints", function( data ) {
+                $("#hints").html(data["hints"]);
+            });
+        }
+
+        function submitLoad(){
+          $.get( "./"+chalID+"/func", function( data ) {
+            editor.setValue(data,-1)
+          });
+          loadHints();
+        }
+
+        function submitClick(){
+          var textContent = this.editor.getValue();
+          $("#results").html("Checking solution...");
+          $("#log-results").html("");
+          $.post( "./"+chalID+"/send", { "usercontent": textContent })
+             .done(function( data ) {
+                 $("#results").html(data["results"]);
+                 $("#log-results").html(data["log-results"]);
+                 loadHints();
+             });
+        }
+
+        function submitReport(){
+          var textContent = this.editor.getValue();
+          $("#message-text").val("")
+          $("#inputDataModal").modal()
+          inputModalConfirm(function (confirm) {
+            if (confirm) {
+              reportMessage = $("#message-text").val()
+              console.log("YES: " + reportMessage);
+              $.post("./" + chalID + "/report", { "usercontent": textContent, "message":reportMessage })
+                .done(function (data) {
+                  $("#results").html(data["results"]);
+                });
+            }
+          });
+        }
+
+        function fontPlus() {
+            var currFontSize = this.editor.getFontSize();
+            this.editor.setFontSize(1+currFontSize);
+        }
+
+        function fontReset() {
+            this.editor.setFontSize(12);
+        }
+
+        function fontMinus() {
+            var currFontSize = this.editor.getFontSize();
+            var nextFontSize = currFontSize - 1;
+            if (nextFontSize<1) {
+                nextFontSize = 1;
+            }
+            this.editor.setFontSize(nextFontSize);
+        }
+
+        window.onload = function() {
+            loadHints();
+        };
+
+        function myTimerFunction() {
+            $.get( {url:"./"+chalID+"/hints", cache:false}, {"heartbeat":true}, function( data ) {
+                $("#hints").html(data["hints"]);
+            });
+        }
+
+    </script>
+  </body>
+</html>

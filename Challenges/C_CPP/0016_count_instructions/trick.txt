@@ -1,0 +1,22 @@
+break main
+run
+
+info line test.c:32
+    ----> read 0x55555555472b
+info line test.c:33
+    ----> read 0x555555554748
+
+define do_count
+  set pagination off
+  set $count=0
+  while ($pc != $arg0)
+      step
+      set $count = $count+1
+  end
+  print $count
+end
+
+break *0x55555555472b
+cont
+do_count 0x555555554748
+

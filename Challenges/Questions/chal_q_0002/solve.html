@@ -1,0 +1,12 @@
+{%
+  if ( (post.holes[0].hole1=="drag3") and
+       (post.holes[0].hole2=="drag14") and
+       (post.holes[0].hole3=="drag16") and
+       (post.holes[0].hole4=="drag10") )
+%}
+  <h1>Well Done!</h1><br>
+  Here is your flag: {{cfg.flag}}
+{% else %}
+  <!-- FAIL -->
+  Nay :-(
+{% endif %}

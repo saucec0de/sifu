@@ -1,0 +1,14 @@
+{%
+  if ( ("false"  == post.selection_A1[0]) and
+       ("false" == post.selection_A2[0]) and
+       ("true" == post.selection_A3[0]) and
+       ("false" == post.selection_A4[0]) and
+       ("true"  == post.selection_A5[0]) )
+%}
+  <h1>Well Done!</h1><br>
+  <h2>Due to the small block size, one only needs to figure out the mapping for all the 256 possible plaintext blocks. If we acquire an unencrypted (but slightly different) software then a simple frequency analysis is likely to break the encryption. On the other hand, if we have the plaintext-ciphertext pair of another software image encrypted with the same key, then this will likely tell us all the 256 mappings (since software images tend to be large enough in size to contain all 256 possible blocks).</h2><br>
+  Here is your flag: {{cfg.flag}}
+{% else %}
+  <!-- FAIL -->
+  Nay :-(
+{% endif %}

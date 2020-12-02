@@ -1,0 +1,10 @@
+[
+    {
+        "tc": "TEST_100",
+        "msg": "ERROR (basic.c,5): Memory leak",
+        "expect": "",
+        "seen": "",
+        "tag": "",
+        "result": "FAIL"
+    }
+]

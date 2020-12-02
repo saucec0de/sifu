@@ -1,0 +1,40 @@
+gcc_error_with_line_number_and_column:
+  rx: "(:?.*):(\\d+):(\\d+): error: (.*)"
+  set: gcc
+  out:
+    - fileName
+    - lineNumber
+    - columnNumber
+    - errorMessage
+
+LeakSanitizer_memory_leak_with_file:
+  rx: "==(\\d+)==ERROR: (LeakSanitizer): (detected memory leaks)"
+  set: leak
+  out:
+    - leakNr
+    - origin
+    - reason
+  next:
+    rx: "^Direct leak of (\\d+) byte\\(s\\) in (\\d+) object\\(s\\) allocated from:$"
+    out:
+      - mountMemoryLost
+      - nrAllocations
+    next:
+      rx: "^.*in (.*) (.*):(\\d+)$"
+      out:
+        - functionName
+        - fileName
+        - lineNumber
+
+LeakSanitizer_memory_leak_without_file:
+  rx: "==(\\d+)==ERROR: (LeakSanitizer): (detected memory leaks)"
+  set: leak
+  out:
+    - leakNr
+    - origin
+    - reason
+  next:
+    rx: "^SUMMARY: AddressSanitizer: (\\d+) byte\\(s\\) leaked in (\\d+) allocation\\(s\\)\\.$"
+    out:
+      - mountMemoryLost
+      - nrAllocations

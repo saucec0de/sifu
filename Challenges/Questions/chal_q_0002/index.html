@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+    <header>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Secure Coding 师父</title>
+        <link href="/static/bootstrap.min.css" rel="stylesheet">
+        <link href="/static/navbar-fixed-top.css" rel="stylesheet">
+        <link href="/static/jquery-ui-1.9.2.css" rel="stylesheet">
+        <script src="/static/jquery-1.11.1-min.js"></script>
+        <script src="/static/jquery-ui-1.9.2.js"></script>
+        <script src="/static/bootstrap.min.js"></script>
+        <script src="/static/displace.min.js"></script>
+        <link href="./{{chalID}}/file/index.css" rel="stylesheet">
+    </header>
+    <body style="min-height:600px">
+        <nav class="navbar navbar-light bg-light fixed-top">
+                <div class="font-weight-bold">
+                    师父
+                    <button onclick="submitAnswer()" class="btn bg-success my-2 my-sm-0 ml-4" type="button" id="submitclick">Submit</button>
+                    <button onclick="submitReport()" class="btn bg-warning my-2 my-sm-0" type="button" id="submitload">Report Challenge</button>
+                </div>
+                <div class="ml-auto">
+                    <button onclick="submitLoad()" class="btn bg-primary my-2 my-sm-0" type="button" id="submitload">Reload</button>
+                    <button onclick="window.location.href='/'" class="btn btn-outline-primary my-2 my-sm-0 ml-4" type="button">Main</button>
+                    <button class="btn bg-danger ml-4 my-2 my-sm-0" onclick="window.location.href='/logout'" >Logout</button>
+                </div>
+        </nav>
+        <!-- input box modal dialog -->
+        <div class="container">
+            <div class="modal fade" id="inputDataModal" tabindex="-1" role="dialog" aria-labelledby="inputDataModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="inputDataModalLabel">Report Problem with a Challenge</h5>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group row">
+                                <label for="message-text" class="col-sm-10 col-form-label">Please enter a short description of the problem</label>
+                                <textarea class="form-control" id="message-text"></textarea>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn bg-primary text-white" id="modal-btn-send">Submit</button>
+                                    <button type="button" class="btn bg-secondary text-white" id="modal-btn-cancel">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="main" style="font-family: monospace;">
+            <div style="margin:auto; width: 800px; font-size:20px">
+                The following picture shows the architecture of a <b>Public Key Cryptography</b> system,
+                whereby some labels are missing. Drag and drop the correct keywords below to their correct
+                places in the diagram to win this challenge. Please notice: this example is referring to a SIGNATURE algorithm.
+            </div>
+            <div style="width:800px; height:40px"> </div>
+            <div style="margin:auto; width: 800px">
+                <div style="height:0px">
+                    <div id="hole1" class="hole_1 drag fixed"></div>
+                    <div id="hole2" class="hole_2 drag fixed"></div>
+                    <div id="hole3" class="hole_3 drag fixed"></div>
+                    <div id="hole4" class="hole_4 drag fixed"></div>
+                </div>
+                <div style="margin:auto; width:800px">
+                    <img src="./{{chalID}}/file/chal.png" style="margin:auto; width:800px">
+                </div>
+            </div>
+            <div style="width:800px; height:20px"> </div>
+            <div style="margin:auto; width:800px">
+                <div id="drag1"  class="drag moveable" style="background-color:lightgreen">Recipient</div>
+                <div id="drag2"  class="drag moveable" style="background-color:lightgreen">Personal Key</div>
+                <div id="drag3"  class="drag moveable" style="background-color:lightgreen">Sender</div>
+                <div id="drag4"  class="drag moveable" style="background-color:lightgreen">Send Key</div>
+                <div id="drag5"  class="drag moveable" style="background-color:lightgreen">Receive Key</div>
+                <div id="drag6"  class="drag moveable" style="background-color:lightgreen">Transmitter</div>
+                <br>
+                <div id="drag7"  class="drag moveable" style="background-color:lightgreen">Decompression</div>
+                <div id="drag8"  class="drag moveable" style="background-color:lightgreen">Hash Key</div>
+                <div id="drag9"  class="drag moveable" style="background-color:lightgreen">Red Key</div>
+                <div id="drag10" class="drag moveable" style="background-color:lightgreen">Receiver</div>
+                <div id="drag11" class="drag moveable" style="background-color:lightgreen">Blue Key</div>
+                <div id="drag12" class="drag moveable" style="background-color:lightgreen">Initial Key</div>
+                <br>
+                <div id="drag13" class="drag moveable" style="background-color:lightgreen">Final Key</div>
+                <div id="drag14" class="drag moveable" style="background-color:lightgreen">Private Key</div>
+                <div id="drag15" class="drag moveable" style="background-color:lightgreen">Compression</div>
+                <div id="drag16" class="drag moveable" style="background-color:lightgreen">Public Key</div>
+                <div id="drag17" class="drag moveable" style="background-color:lightgreen">Cypher Key</div>
+                <div id="drag18" class="drag moveable" style="background-color:lightgreen">Decypher Key</div>
+            </div>
+        </div>
+        <script>
+
+var myTimer = setInterval(myTimerFunction, {{hbTimer}});
+
+function submitLoad(){
+    location.reload()
+}
+
+var inputModalConfirm = function (callback) {
+    $("#modal-btn-send").on("click", function () {
+        callback(true);
+        $("#inputDataModal").modal('hide');
+        $("#modal-btn-send").off();
+        $("#modal-btn-cancel").off();
+    });
+    $("#modal-btn-cancel").on("click", function () {
+        callback(false);
+        $("#inputDataModal").modal('hide');
+        $("#modal-btn-send").off();
+        $("#modal-btn-cancel").off();
+    });
+};
+
+function submitReport(){
+    var textContent = "";
+    $("#message-text").val("")
+    $("#inputDataModal").modal()
+    inputModalConfirm(function (confirm) {
+        if (confirm) {
+            reportMessage = $("#message-text").val()
+            console.log("YES: " + reportMessage);
+            $.post("./{{chalID}}/report", { "usercontent": textContent, "message":reportMessage })
+                .done(function (data) {
+                    $("#testid").html(data);
+                });
+        }
+    });
+}
+
+function submitAnswer() {
+    selection = getHoles();
+    $.post( "./{{chalID}}/file/solve.html", {"holes": selection} )
+        .done(function( retHtmlCode ) {
+            $("#main").html(retHtmlCode);
+        });
+}
+
+function myTimerFunction() {
+    $.get( {url:"./{{chalID}}/hints", cache:false}, {"heartbeat":true}, function( data ) {
+        $("#hints").html(data["hints"]);
+    });
+}
+
+    $(function () {
+        $(".drag").draggable({
+            snap: true,
+            snapMode: "inner"
+        });
+        $( ".fixed" ).draggable( "disable" );
+        $( ".fixed" ).removeClass("ui-state-disabled");
+    });
+
+function betweenDelta(a,b,delta) {
+    if (Math.abs(a-b)<delta) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function getHoles() {
+    var holes = {};
+    $('.fixed').each(function(ii, objFix) {
+        var fixID = objFix.id;
+        var fixOffset = $("#"+fixID).offset();
+        $('.moveable').each(function(jj, objMove) {
+            var moveID = objMove.id;
+            var moveOffset = $("#"+moveID).offset();
+            var testTop = betweenDelta( fixOffset.top, moveOffset.top, 4);
+            var testLeft = betweenDelta( fixOffset.left, moveOffset.left, 4);
+            if ( (true==testTop) && (true==testLeft) ) {
+                holes[fixID] = moveID;
+            }
+        });
+    });
+    return JSON.stringify(holes);
+}
+        </script>
+    </body>
+</html>

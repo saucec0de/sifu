@@ -1,0 +1,2 @@
+Virtual destructors
+pure Virtualhow des it work

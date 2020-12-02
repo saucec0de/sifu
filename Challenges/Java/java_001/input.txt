@@ -1,0 +1,4 @@
+This is a simple text file.
+It contains only four lines of text.
+We are now on the third file.
+Here, we have the fourth and last line, which is also the largest.

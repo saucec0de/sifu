@@ -1,0 +1,14 @@
+{% if "A1" == post.selection[0]  %}
+  <h1>Well Done!</h1><br>
+  <h2>The validation logic fails to detect a &lt;script&gt; tag because the string is not normalized. Therefore the code can accept invalid input.</h2><br>
+  <h2>Such blacklisting mechanisms are generally insufficient for complete input validation and sanitization.</h2><br>
+  <h2>The best solution is to rely on already implemented libraries</h2><br>
+
+  <h2>
+    For further information read <a target="_blank" rel="noopener noreferrer" href="https://wiki.sei.cmu.edu/confluence/display/java/IDS01-J.+Normalize+strings+before+validating+them"> here</a> (SEI CERT Secure Coding Java Standard - IDS02-J)
+  </h2><br>
+  Here is your flag: {{cfg.flag}}
+{% else %}
+  <!-- FAIL -->
+  Nay :-(
+{% endif %}

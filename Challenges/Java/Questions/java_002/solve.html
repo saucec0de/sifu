@@ -1,0 +1,24 @@
+{% if "A3" == post.selection[0]  %}
+  <h1>Well Done!</h1><br>
+  <br>
+  <h2>Wrong / A1: Remove logs for successful login, perform input validation</h2><br>
+  <h3>Successful logins are worthy to log since they can be used for forensic analysis. Since here we with to log potential malicious data, input validation does not help.</h3><br>
+  <br>
+  <h2>Wrong / A2: Validate the input data and perform output encoding</h2><br>
+  <h3>Since here we with to log potential malicious data, input validation does not help. It might be hard to know which tools will process the logs - therefore we cannot know in which context to perform output encoding </h3><br>
+  <br>
+  <h2>Wrong / A4: Perform output encoding and rate-limiting</h2><br>
+  <h3>It might be hard to know which tools will process the logs - therefore we cannot know in which context to perform output encoding</h3><br>
+  <br>
+  <h2>Right / A3: Sanitize the username and perform rate-limiting</h2><br>
+  <h3>The best solution is to sanitize the username such that no injection can occur in the log files</h3><br>
+  <h3>One example of sanitization is to allow only letters and numbers up to 20 characters and convert all other caracters to underscores</h3><br>
+
+  <h2>
+    For further information read <a target="_blank" rel="noopener noreferrer" href="https://wiki.sei.cmu.edu/confluence/display/java/IDS03-J.+Do+not+log+unsanitized+user+input"> here</a> (SEI CERT Secure Coding Java Standard - IDS03-J)
+  </h2><br>
+  Here is your flag: {{cfg.flag}}
+{% else %}
+  <!-- FAIL -->
+  Nay :-(
+{% endif %}

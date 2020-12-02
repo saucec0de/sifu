@@ -1,0 +1,11 @@
+#
+# Copyright (c) Siemens AG, 2020
+#     tiago.gasiba@gmail.com
+#
+# SPDX-License-Identifier: MIT
+#
+user.o: user.c
+	@echo "[$(COLOR_RED)SPECIAL$(COLOR_OFF)]: Compiling C++ file: $^"
+	@$(CC) $(EXTRAOPTS) -O0 -fno-stack-protector -c $< -o $@ 2>> $(COMPILEFILE)                || true
+	@$(CC) $(EXTRAOPTS) -O0 -fno-stack-protector -c -S -masm=intel $< 2> /dev/null > /dev/null || true
+	@$(CC) $(EXTRAOPTS) -fpreprocessed -dD -E $< > $<.pp 2> /dev/null || true

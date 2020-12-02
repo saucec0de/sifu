@@ -1,0 +1,11 @@
+{% if "A4" == post.selection[0]  %}
+  <h1>Well Done!</h1><br>
+  <h2>The order of evaluation of the three function calls is unspecified behavior and thus can happen in any order. Read more here:
+    <a target="_blank" rel="noopener noreferrer" href="https://en.cppreference.com/w/c/language/eval_order">
+      Order of evaluation</a></h2><br>
+  
+  Here is your flag: {{cfg.flag}}
+{% else %}
+  <!-- FAIL -->
+  Nay :-(
+{% endif %}

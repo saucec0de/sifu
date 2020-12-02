@@ -1,0 +1,37 @@
+{% if "A4" == post.selection[0]  %}
+  <h1>Which of the following is correct?</h1>
+  <img src="./{{chalID}}/file/fig1.jpg" class="rounded mx-auto d-block" style="width:400px">
+  <form >
+          <input type="checkbox" name="choice" value="A1"> ROP stands for Return-Oriented-Programming
+      <br><input type="checkbox" name="choice" value="A2"> Stack cannaries are useless against ROP
+      <br><input type="checkbox" name="choice" value="A3"> ROP is necessary when the stack is executable
+      <br><input type="checkbox" name="choice" value="A4"> One ROP mitigation is ASLR
+  </form>
+  <br>
+  <script>
+      unlockLink = "./{{chalID}}/unlock_file/{{cfg.unlock_codes[0]}}";
+      console.log("Unlock: " + unlockLink);
+      $.get( unlockLink );
+      $("#submitclick").prop("onclick", null).off("click")
+      $("#submitclick").on("click", submitAnswerStep1);
+
+      function submitAnswerStep1() {
+        var choices = document.getElementsByName("choice");
+        var sel     = {};
+
+        for( i=0; i<choices.length; i++ ) {
+          ansKey      = choices[i].value;
+          ansVal      = choices[i].checked;
+          sel[ansKey] = ansVal;
+          console.log("SubtmitAnswerStep1",i,sel);
+        }
+        $.post( "./{{chalID}}/file/done.html", { "selection": sel })
+         .done(function( retHtmlCode ) {
+             $("#main").html(retHtmlCode);
+        });
+      }
+  </script>
+{% else %}
+  <!-- FAIL -->
+  Nay :-(
+{% endif %}

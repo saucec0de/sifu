@@ -1,0 +1,29 @@
+// vulnerabilities in original function:
+// unsigned overflow (3 places)
+// using uninitialized variables (temporarily removed)
+// if semicolon
+// algorithm (when len = 1)
+
+#include <stddef.h>
+
+unsigned get_max_greater_by_k_in_array(unsigned* arr, size_t len, unsigned k) {
+    if (len == 1)
+        return arr[0];
+
+    unsigned max = 0;
+    unsigned second_max = 0;
+
+    for (size_t i = 0; i < len; i++) {
+        if (arr[i] > max) {
+            second_max = max;
+            max = arr[i];
+        } else if (arr[i] > second_max) {
+            second_max = arr[i];
+        }
+    }
+
+    if (max - second_max >= k)
+        return max;
+    else
+        return 0;
+}

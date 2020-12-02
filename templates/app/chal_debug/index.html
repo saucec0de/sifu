@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <script src="/static/vue.min.js"></script>
+  </head>
+  <body>
+{% raw %}
+    <div id="app">
+      <p>{{ chalMsg }}</p>
+      <p>{{ userMsg }}</p>
+    </div>
+{% endraw %}
+    <script> {% for varName in allVars %}
+      var {{varName}} = "{{allVars[varName]}}"; {% endfor %}
+      var userName = "{{ user }}";
+      var isAdmin  = "{{ isAdmin }}";
+    </script>
+    <script src="/app/chal_debug?file=main.js"></script>
+
+  </body>
+</html>

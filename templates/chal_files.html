@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Secure Coding 师父</title>
+    <link href="/static/full-height.css" rel="stylesheet">
+    <link href="/static/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/navbar-fixed-top.css" rel="stylesheet">
+    <link href="/static/jstree/jstree.min.css" rel="stylesheet"/>
+    <link href="/static/rate.css" rel="stylesheet"/>
+    <link href="/static/sifu.css" rel="stylesheet"/>
+    <link href="/static/introjs.css" rel="stylesheet">
+    <link href="/static/bootstrap-responsive.min.css" rel="stylesheet">
+    <script src="/static/jquery-3.4.1-min.js"></script>
+    <script src="/static/bootstrap.min.js"></script>
+    <script src="/static/ace/ace.js"></script>
+    <script src="/static/jstree/jstree.min.js"></script>
+    <link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAADTklEQVRYR+2XW2gUZxTHf9/M7OxuZpOYpiaNwcYkRFtN8X6hTVpoKpao0FANSvCl6kuggmChyIoPQryg1YeStpJSEK21NEVFY6CKF0QEiaCtGrVr6nVNUGuy2SQzm52VmVzIOlnjU+LDfo8zzDm/8z/f/wxHsDkm5U18ulEgVQM5jM4JxjBr797PrBF5e5/4hSRtGZ288VliprlJTKp79mgUK3+5zqAFEBuL6gdyJgGSCiQVSKjA6mI3Zx9EaO1K7NKQEf/uwwkKrWGTQLtpu2xetkJHJEbzs2hCpzsApmTIBMMmmxd4qb9tsGGO1/5YkaBwnMzN/mBGNMaKhs7BwJPSJOqXplJ1onMw4UcTFHZ+rLH+bJiLwd5hIRwA20tTONiss+p9NweadS639dFnuAX7Pvex9EjIEehtr+DQ4lR+/kfn12Y97v3MLIW9n2msPxPm/CMnxIgA0zIVSnIVXJJgdrbCxWDETnAkYNDQEqEgXaJuoY+jdwz2XO5xwHkVwfTxMj+U+ahqCHH9pXaMCLB8spum1l5a2qNsLdWoPtXJojwVAXx/pYcvClUyvYJfruk0VqRReTzEc73vbswYL/PdJxqf/tFBeb7Lbt/A/Ug4igdbMNXNgRs6FsDRgGH3daAFy4tUslMkG2Do+XauFz0aY3e/ErVlGlfaovz0t1OZEQHWfODhx6s9VL33+gAZHsGJijRWNoTI0SR2lGosrO+guzexkxwtsOx35n6EbaUa606HWTfT89oKWFVZLame7sGnCjacC3NhmIs3VLVh54Aqw+ll6ZQcaqemJMUBUDlZJcvrbIEVeOpbMr8tTqXdiFF5LGRb+lVnWIAvi1QW5Ch8c64L/3wvjf9FCDzvuwNWP1cXe9h+qTvO26mqYG2xhxVTVPwXuigaJ/NVsZtdTT38fkunNwGHAyDXJ9meXtUYoqV/or1qDljWrChUKc9X+euewa6mbtr6p+esLBn//BTe0SQO/2twOGBw6//4qegAsHxdkC5z8l6f3weO5hJ8PcPDtkvdcc/L3nVhTc8/b+s8TjC2Z2UpLClwsf+Gzp0hRVmBkn/DpAJJBd4IBcZ2Ncure+IXjNFyirlJ2Ot57tONQhrl9dw0a+8+zKx5AXE9pb68J6ViAAAAAElFTkSuQmCC" rel="icon" type="image/x-icon" />
+    <link href="/static/speech-bubble.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="container-fluid h-100" style="height:80%">
+        <nav class="navbar navbar-light bg-light fixed-top">
+            <div class="font-weight-bold">
+              师父
+              <button onclick="submitClick()"  class="btn bg-success my-2 my-sm-0   ml-2" type="button" id="submitclick">Submit</button>
+              <button onclick="submitReport()" class="btn bg-warning my-2 my-sm-0   ml-2" type="button" id="submitreport">Report Challenge</button>
+              <div id="fontButtons" class="btn-group">
+                  <button onclick="fontPlus()"     class="btn bg-secondary my-2 my-sm-0 ml-2" type="button" id="fplus">+</button>
+                  <button onclick="fontReset()"    class="btn bg-secondary my-2 my-sm-0"      type="button" id="fzero">0</button>
+                  <button onclick="fontMinus()"    class="btn bg-secondary my-2 my-sm-0"      type="button" id="fminus">-</button>
+              </div>
+            </div>
+            <div class="ml-auto">
+              {% if isAdmin==True %}
+              <button onclick="clickDebug()"                  class="btn bg-dark text-light my-2 my-sm-0"          type="button" id="debugButton">Debug</button>
+              {% endif %}
+              <button onclick="clickHelp()"                   class="btn btn-outline-dark my-2 my-sm-0"    type="button" id="helpButton">Help</button>
+              <button onclick="submitLoad(true)"              class="btn bg-primary my-2 my-sm-0"          type="button" id="submitload">Reload</button>
+              <button onclick="window.location.href='/'"      class="btn btn-outline-primary my-2 my-sm-0" type="button" id="mainButton">Main</button>
+              <button class="btn bg-danger ml-2 my-2 my-sm-0" onclick="window.location.href='/logout'"                   id="logoutButton">Logout</button>
+            </div>
+        </nav>
+
+        <div style="width:100%; height:80%; display:flex">
+            <div id="treecontainer" style="width:15%; min-width:22%; margin-right:-7.15%; height:149%; transform: scale(0.67); transform-origin: 0 0; overflow:auto; background-color:aliceblue" class="jstree-default-small" >
+            </div>
+            <div style="width:85%; height:100%">
+                <div class="grid" style="width:100%; height:100%; display:flex">
+                    <div id="editor" style="height: 100%; width: 70%; flex:1;"></div>
+                    <div id="hints" style="overflow:scroll; overflow-x:hidden; height:100%; width:30%; background: lavender;font-family:monospace"></div>
+                </div>
+            </div>
+        </div>
+        <div id="log-results" style="overflow:scroll; overflow-x:hidden; height:100px; width:99.85%; background: khaki; font-family:monospace"></div>
+        <div id="results" style="height:20px; width:99.85%; background: antiquewhite; font-family:monospace"> Ready. </div>
+    </div>
+
+    <div class="container">
+      <div class="modal fade" id="inputDataModal" tabindex="-1" role="dialog" aria-labelledby="inputDataModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="inputDataModalLabel">Report Problem with a Challenge</h5>
+            </div>
+            <div class="modal-body">
+              <div class="form-group row">
+                <label for="message-text" class="col-sm-10 col-form-label" style="margin-left:4%; min-width: 120%" > Please provide a description of the problem you are experiencing</label>
+                <textarea class="form-control" id="message-text" style="max-width:90%; margin-left:7%; height:150px"></textarea>
+              </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn bg-primary text-white" id="modal-btn-send">Submit</button>
+                <button type="button" class="btn bg-secondary text-white" id="modal-btn-cancel">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="modal fade" id="finishModal" tabindex="-1" role="dialog" aria-labelledby="finishModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="finishModalLabel">Well Done!</h5>
+            </div>
+            <div class="modal-body">
+                <div class="container col-md-12" style="line-height: 20px;" >
+                    <div class="row">
+                        <div class="col-md-9">Please rate this challenge</div>
+                        <div class="col-md-3 rate">
+                            <input type="radio" id="star15" name="rate1" value="5" /> <label for="star15" title="Very Good">5 stars</label>
+                            <input type="radio" id="star14" name="rate1" value="4" /> <label for="star14" title="Good">4 stars</label>
+                            <input type="radio" id="star13" name="rate1" value="3" /> <label for="star13" title="Neutral">3 stars</label>
+                            <input type="radio" id="star12" name="rate1" value="2" /> <label for="star12" title="Bad">2 stars</label>
+                            <input type="radio" id="star11" name="rate1" value="1" /> <label for="star11" title="Very Bad">1 star</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-9">How well could you recognize this vulnerabilitie(s) in production code?</div>
+                        <div class="col-md-3 rate">
+                            <input type="radio" id="star25" name="rate2" value="5" /> <label for="star25" title="Very Good">5 stars</label>
+                            <input type="radio" id="star24" name="rate2" value="4" /> <label for="star24" title="Good">4 stars</label>
+                            <input type="radio" id="star23" name="rate2" value="3" /> <label for="star23" title="Neutral">3 stars</label>
+                            <input type="radio" id="star22" name="rate2" value="2" /> <label for="star22" title="Bad">2 stars</label>
+                            <input type="radio" id="star21" name="rate2" value="1" /> <label for="star21" title="Very Bad">1 star</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-9">How well did you know how to fix this problem(s) in production code?</div>
+                        <div class="col-md-3 rate">
+                            <input type="radio" id="star35" name="rate3" value="5" /> <label for="star35" title="Very Good">5 stars</label>
+                            <input type="radio" id="star34" name="rate3" value="4" /> <label for="star34" title="Good">4 stars</label>
+                            <input type="radio" id="star33" name="rate3" value="3" /> <label for="star33" title="Neutral">3 stars</label>
+                            <input type="radio" id="star32" name="rate3" value="2" /> <label for="star32" title="Bad">2 stars</label>
+                            <input type="radio" id="star31" name="rate3" value="1" /> <label for="star31" title="Very Bad">1 star</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn bg-primary text-white" id="modal-btn-ok">OK</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <body style="background-color:#fafffa;">
+    <img id="yipman" src="/static/images/sifu.png" alt="Sifu" class="sifu_overlay">
+
+    <script type="text/javascript">
+        var editor   = ace.edit("editor");
+        var chalID   = window.location.pathname.split('/')[2];
+        var files    = {};
+        var workFile = "./func.c";
+        var myTimer  = setInterval(myTimerFunction, {{hbTimer}});
+
+      
+        function loadEditor(fileName) {
+            workFile = fileName;
+            fileName = fileName.toUpperCase()
+            if (fileName.endsWith(".C")) {
+                editor.session.setMode("ace/mode/c_cpp");
+            } else
+                if (fileName.endsWith(".CPP")) {
+                    editor.session.setMode("ace/mode/c_cpp");
+                } else
+                if (fileName.endsWith(".H")) {
+                    editor.session.setMode("ace/mode/c_cpp");
+                } else
+                if (fileName.endsWith(".JAVA")) {
+                    editor.session.setMode("ace/mode/java");
+                } else
+                if (fileName.endsWith(".XML")) {
+                    editor.session.setMode("ace/mode/xml");
+                } else {
+                    editor.session.setMode("ace/mode/text");
+                }
+            editor.setValue(files[workFile],-1)
+            editor.getSession().setUndoManager(new ace.UndoManager())
+        }
+
+        var inputModalConfirm = function (callback) {
+          $("#modal-btn-send").on("click", function () {
+            callback(true);
+            $("#inputDataModal").modal('hide');
+            $("#modal-btn-send").off();
+            $("#modal-btn-cancel").off();
+          });
+          $("#modal-btn-cancel").on("click", function () {
+            callback(false);
+            $("#inputDataModal").modal('hide');
+            $("#modal-btn-send").off();
+            $("#modal-btn-cancel").off();
+          });
+        };
+
+        var finishModalConfirm = function (callback) {
+          $("#modal-btn-ok").off();
+          $("#modal-btn-ok").on("click", function () {
+              var rate1 = (document.getElementsByName("rate1")[0].checked?5:0) +
+                          (document.getElementsByName("rate1")[1].checked?4:0) +
+                          (document.getElementsByName("rate1")[2].checked?3:0) +
+                          (document.getElementsByName("rate1")[3].checked?2:0) +
+                          (document.getElementsByName("rate1")[4].checked?1:0);
+              var rate2 = (document.getElementsByName("rate2")[0].checked?5:0) +
+                          (document.getElementsByName("rate2")[1].checked?4:0) +
+                          (document.getElementsByName("rate2")[2].checked?3:0) +
+                          (document.getElementsByName("rate2")[3].checked?2:0) +
+                          (document.getElementsByName("rate2")[4].checked?1:0);
+              var rate3 = (document.getElementsByName("rate3")[0].checked?5:0) +
+                          (document.getElementsByName("rate3")[1].checked?4:0) +
+                          (document.getElementsByName("rate3")[2].checked?3:0) +
+                          (document.getElementsByName("rate3")[3].checked?2:0) +
+                          (document.getElementsByName("rate3")[4].checked?1:0);
+              if ( (rate1>0) && (rate2>0) && (rate3>0) ) {
+                  callback(rate1,rate2,rate3);
+                  $("#finishModal").modal('hide');
+                  $("#modal-btn-ok").off();
+              }
+          });
+        };
+      var previousHints = null;
+
+      function loadHints() {
+         
+          $.get( {url:"./"+chalID+"/hints", cache:false}, function( data ) {
+            
+            
+          console.log(previousHints)
+          
+          
+          if(previousHints == null){
+            previousHints = data["hints"];
+          }
+/*
+  Tiago: I have brought this change to the main branch by mistake,... 
+  So I am deactivanting it now; however, this code should be removed anyways
+          if(data["hints"] != previousHints){
+            $('img').css('background', 'aqua');
+          }
+*/
+          previousHints = data["hints"];
+          $("#hints").html(data["hints"]);
+
+
+            
+          });
+      }
+
+      function clickHelp() {
+          var intro = introJs();
+              intro.setOptions({
+              steps : [
+                  { element: document.querySelector("#yipman"),
+                    intro  : "Welcome to the Sifu platform!<p>Press ENTER or click on Next" },
+                  { element: document.querySelector("#yipman"),
+                    intro  : "I am your host, Shifu Yipman" },
+                  { element: document.querySelector("#yipman"),
+                    intro  : "In this platform you will be solving secure coding challenges..." },
+                  { element: document.querySelector("#yipman"),
+                    intro  : "Your goal is to rewrite the code of the given project in such way that:<p>1) it performs the specified functionality<p>2) follows secure coding guidelines and<p>3) does not contain weaknesses" },
+                  { element: document.querySelector("#yipman"),
+                    intro  : "I am here to check your code and to help you out" },
+                  { element: document.querySelector("#treecontainer"),
+                    intro  : "Here you can browse the project files and select a file to edit" },
+                  { element: document.querySelector("#editor"),
+                    intro  : "In this editor window you can read and change the source code of the currently selected file" },
+                  { element: document.querySelector("#submitclick"),
+                    intro  : "Click this button to submit the code to me. I will analyse the code and look for violations of secure coding guidelines and for weaknesses in the code" },
+                  { element: document.querySelector("#yipman"),
+                    intro  : "If your code looks fine, I will give you a flag..." },
+                  { element: document.querySelector("#yipman"),
+                    intro  : "If not, I will help you out from time to time..." },
+                  { element: document.querySelector("#results"),
+                    intro  : "Here I will show you the results of the analysis. If your code passes my checks, you will receive a flag" },
+                  { element: document.querySelector("#yipman"),
+                    intro  : "You can also find the flag in the main menu of the Sifu platform" },
+                  { element: document.querySelector("#log-results"),
+                    intro  : "You can use a logger() in your code and print here your own debugging information" },
+                  { element: document.querySelector("#yipman"),
+                    intro  : "I will give you some hints to help you solve the challenge" },
+                  { element: document.querySelector("#hints"),
+                    intro  : "You can see my hints in this window" },
+                  { element: document.querySelector("#fontButtons"),
+                    intro  : "With these buttons you can decrease, reset or increase the font size used in the code editor" },
+                  { element: document.querySelector("#yipman"),
+                    intro  : "I will remember the changes you have done to your code, even if you reload the page" },
+                  { element: document.querySelector("#submitload"),
+                    intro  : "However, you can use this button to reload all the files in the project - they will be reset to the initial values" },
+                  { element: document.querySelector("#mainButton"),
+                    intro  : "Click this button to go to the main menu of the Sifu platform" },
+                  { element: document.querySelector("#yipman"),
+                    intro  : "There you can find all the challenges that you have unlocked" },
+                  { element: document.querySelector("#logoutButton"),
+                    intro  : "By clicking this button, you will be logged out from the Sifu platform" },
+                  { element: document.querySelector("#yipman"),
+                    intro  : "While analysing your code, I will jump up and down" },
+                  { element: document.querySelector("#yipman"),
+                    intro  : "Remember to have FUN :)" }
+              ]
+           } );
+          intro.start();
+      }
+
+{% if isAdmin==True %}
+      function clickDebug() {
+          var win = window.open("/app/chal_debug?chalID="+chalID, "debugWindow");
+          win.focus();
+      }
+{% endif %}
+        function submitLoad(reset){
+          $.get( {url:"./"+chalID+"/func", cache:false}, {"reset":reset}, function( data ) {
+            //f = JSON.stringify(data);
+            files = data["fcontent"];
+            jstree_json = data["dirstruct"];
+            loadEditor(data["workFile"]);
+            $('#treecontainer').jstree(true).settings.core.data = jstree_json;
+            $('#treecontainer').jstree(true).refresh();
+          });
+          loadHints();
+        }
+
+        function submitClick(){
+          var jump_stop_flag = 0;
+          var x_interval = 0;
+          var result = 0;
+          var height_const = 35;
+          var height = 35, num_jumps = 5, period = 20;
+          var height_diff = 5;
+          
+          var interval = setInterval(function() {
+              x_interval++;
+              move = 0 - (x_interval * (x_interval - height))/(period/num_jumps)
+              $('img').css('bottom', move);
+              if(result >= 1){
+                jump_stop_flag = 1;
+
+              }
+              if(x_interval >= height){ 
+                x_interval = 0;
+                height = height - height_diff;
+                if(height <= height_const - num_jumps * height_diff)
+                  height = height_const;
+                if(jump_stop_flag){
+                  clearInterval(interval);
+                  $('img').css('bottom', 0);
+
+                }
+              }
+          },period ); 
+            
+          
+          var textContent = this.editor.getValue();
+          $("#results").html("Checking solution...");
+          $("#log-results").html("");
+          $.post( "./"+chalID+"/send_all", { "userfiles": JSON.stringify(files) })
+             .done(function( data ) {
+              
+              result = 1;
+                 if (data["solve"]=="true") {
+                     if (data["feedback"]!=="skip") {
+                         $("#finishModal").modal()
+                         $("#results").html("");
+                         $("#log-results").html("");
+                         finishModalConfirm(function (rate1,rate2,rate3) {
+                             $.post("./" + chalID + "/chal_feedback", { "rate1": rate1, "rate2":rate2, "rate3":rate3})
+                               .done(function (data) {
+                               });
+                               $("#results").html(data["results"]);
+                               $("#log-results").html(data["log-results"]);
+                         });
+                     } else {
+                         $("#results").html(data["results"]);
+                         $("#log-results").html(data["log-results"]);
+                     }
+                 } else {
+                     $("#results").html(data["results"]);
+                     $("#log-results").html(data["log-results"]);
+                 }
+                 loadHints();
+             });
+        }
+
+        function submitReport(){
+          var textContent = this.editor.getValue();
+          $("#message-text").val("")
+          $("#inputDataModal").modal()
+          inputModalConfirm(function (confirm) {
+            if (confirm) {
+              reportMessage = $("#message-text").val()
+              console.log("YES: " + reportMessage);
+              filesJ = JSON.stringify(files);
+              $.post("./" + chalID + "/report", { "usercontent": textContent, "files":filesJ, "message":reportMessage })
+                .done(function (data) {
+                  $("#results").html(data["results"]);
+                });
+            }
+          });
+        }
+
+        function fontPlus() {
+            var currFontSize = this.editor.getFontSize();
+            this.editor.setFontSize(1+currFontSize);
+        }
+
+        function fontReset() {
+            this.editor.setFontSize(20);
+        }
+
+        function fontMinus() {
+            var currFontSize = this.editor.getFontSize();
+            var nextFontSize = currFontSize - 1;
+            if (nextFontSize<1) {
+                nextFontSize = 1;
+            }
+            this.editor.setFontSize(nextFontSize);
+        }
+
+        $(document).ready(function(){
+            submitLoad(false);
+            $('#treecontainer').jstree();
+        });
+
+        window.onload = function() {
+            loadHints();
+            $('#treecontainer').jstree({ 'core' : {
+                'animation' : 1,
+                'data' : 
+                [{'id': '.', 'parent': '#', 'text': '.'}, {'id': './A', 'parent': '.', 'text': 'LOADING...', 'icon': 'jstree-file'} ]
+            } });
+        };
+
+        $(function () {
+            $.jstree.defaults.core.themes.variant = "large";
+            $('#treecontainer').jstree();
+            editor.setTheme("ace/theme/monokai");
+            editor.session.setMode("ace/mode/c_cpp");
+            editor.setFontSize(20);
+            if (performance.navigation.type == 1) {
+                console.info( "This page is reloaded" );
+            } else {
+                console.info( "This page is not reloaded");
+            }
+            });
+
+        $('#treecontainer').on('ready.jstree', function() {
+            $("#treecontainer").jstree("open_all");
+        });
+        $('#treecontainer').on('refresh.jstree', function() {
+            $("#treecontainer").jstree("open_all");
+            $("#treecontainer").jstree("select_node",workFile)
+        });
+
+        $('#treecontainer').on('changed.jstree', function (e, data) {
+            if (data.selected.length==1) {
+                selectedNode = data.selected[0];
+                if (data.instance.is_leaf(data.node)) {
+                    loadEditor(selectedNode)
+                } else {
+                    // ignore selection -> this is a folder
+                }
+            } else {
+                // ignore selection -> this is a folder
+            }
+        })
+
+        editor.getSession().on('change', function() {
+          files[workFile] = editor.getValue();
+        });
+
+        function myTimerFunction() {
+            var focused = document.hasFocus()
+
+            if (focused) {
+                $.get( {url:"./"+chalID+"/hints", cache:false}, {"heartbeat":true, "userfiles":JSON.stringify(files)}, function( data ) {
+                  $("#hints").html(data["hints"]);
+              });
+            }
+        }
+
+    </script>
+    <script type="text/javascript" src="/static/intro.js"></script>
+  </body>
+</html>

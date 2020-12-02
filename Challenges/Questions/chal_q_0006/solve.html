@@ -1,0 +1,12 @@
+{% if "A2" == post.selection[0]  %}
+  <h1>Well Done!</h1><br>
+  <h2>Snippet 2 is the most resistant to timing attacks. However, it is not a perfect solution since, for example, the if-condition at the end can leak information due to branching mispredictions. Therefore, it is always best to use functions that need to be secure from a trusted crypto library rather than implementing them yourself.</h2><br>
+  <h2>
+    You can read more about better practices on side-channel resistance 
+    <a target="_blank" rel="noopener noreferrer" href="https://software.intel.com/security-software-guidance/insights/security-best-practices-side-channel-resistance"> here</a>.
+       </h2><br>
+  Here is your flag: {{cfg.flag}}
+{% else %}
+  <!-- FAIL -->
+  Nay :-(
+{% endif %}

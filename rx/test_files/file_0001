@@ -1,0 +1,12 @@
+basic.c: In function ‘main’:
+basic.c:6:5: error: ‘kj’ undeclared (first use in this function)
+    6 |     kj
+      |     ^~
+basic.c:6:5: note: each undeclared identifier is reported only once for each function it appears in
+basic.c:6:7: error: expected ‘;’ before ‘return’
+    6 |     kj
+      |       ^
+      |       ;
+    7 |     return 0;
+      |     ~~~~~~
+gcc-10: error: basic.o: No such file or directory

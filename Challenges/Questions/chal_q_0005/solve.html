@@ -1,0 +1,8 @@
+{% if "A4" == post.selection[0]  %}
+  <h1>Well Done!</h1><br>
+  <h2>In this case, swapping the last two digits has no effect on the entropy.</h2><br>
+  Here is your flag: {{cfg.flag}}
+{% else %}
+  <!-- FAIL -->
+  Nay :-(
+{% endif %}

@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "func.h"
+
+/***
+    Change the colour of lamp lights according to the passed argument
+    Return 0 if colour was successfully switched, else 1.
+   
+    Parameter:
+    colour: a string
+**/
+int switch_colour(char* colour) {
+    char cmd[CMD_MAX];
+    cmd[0] = '\0';
+
+    int ret;
+    if (strcmp(colour, "red") == 0) {
+        snprintf(cmd, CMD_MAX, "%s %s", switch_colour_exe_path, "-c red");
+        ret = system(cmd);
+    }
+    else if (strcmp(colour, "green") == 0) {
+        snprintf(cmd, CMD_MAX, "%s %s", switch_colour_exe_path, "-c green");
+        ret = system(cmd);
+    }
+    else if (strcmp(colour, "blue") == 0) {
+        snprintf(cmd, CMD_MAX, "%s %s", switch_colour_exe_path, "-c blue");
+        ret = system(cmd);
+    }
+    else {
+        ret = 1;
+    }
+
+    if (ret)
+        return 1;
+    else
+        return 0;
+}

@@ -1,0 +1,10 @@
+[
+    {
+        "tc": "TEST_100",
+        "msg": "There is a security vulnerability with your code.",
+        "expect": "",
+        "seen": "",
+        "tag": "",
+        "result": "FAIL"
+    }
+]

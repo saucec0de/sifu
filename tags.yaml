@@ -1,0 +1,329 @@
+VOID:
+    description: Nothing
+
+TEST_TAG:
+    description: TEST - We have provided an easy way for you to use memset_s. Just include memset_s.h in your code
+    link: http://www.cplusplus.com/reference/cstdio/printf/
+
+FUNC_NOT_FOUND:
+    description: You have removed/changed a function required for this exercise!
+
+TEST_INC_1:
+    description: This is an incremental test nr. 1
+
+TEST_INC_2:
+    description: This is an incremental test nr. 2
+
+FORMAT_001:
+    description: Have a look at <a href='{link}' target='_blank'>Format</a> specifiers
+    link: http://www.cplusplus.com/reference/cstdio/printf/
+
+MEMSET_S_1:
+    description: Maybe you should have a look at the following <a href='{link}' target='_blank'>link</a> specifiers
+    link: https://en.wikipedia.org/wiki/C11_(C_standard_revision)
+
+MEMSET_S_2:
+    description: Have a look at the following <a href='{link}' target='_blank'>link</a>
+    link: https://github.com/intel/linux-sgx/blob/master/sdk/tlibc/string/memset_s.c
+
+MEMSET_S_3:
+    description: Annex K of the C standard describes optional _s functions. In Linux these are unfortunately not implemented...
+
+MEMSET_S_4:
+    description: Another possible solution - you could maybe consider turning on/off <a href='{link}' target='_blank'>code optimization</a> specifiers
+    link: https://interrupt.memfault.com/blog/code-size-optimization-gcc-flags
+
+MEMSET_S_5:
+    description: We have provided an easy way for you to use memset_s. Just include memset_s.h in your code!
+
+################################################
+FUN6610374294_1:
+    description: You might want to check out this <a href='{link1}' target='_blank'>link</a> or this <a href='{link2}' target='_blank'>link</a>!
+    link1: https://wiki.sei.cmu.edu/confluence/display/c/MSC15-C.+Do+not+depend+on+undefined+behavior
+    link2: https://en.wikipedia.org/wiki/Undefined_behavior
+
+FUN6610374294_2:
+    description: The compiler is free to optimize the compiled code assuming that there is no undefined behavior present in the code.
+
+FUN6610374294_3:
+    description: Try to add a logger for the variable 'i' inside the for loop...
+
+FUN6610374294_4:
+    description: Since accessing the Values variable assumes the index in within the bounds (no undefined behavior), the compiler is free to remove the i<4 check!
+
+################################################
+FUNC_7453459449_0_1:
+    description:  Make sure you did not forget anything...
+
+FUNC_7453459449_0_2:
+    description:  This function always results the same result - that is _not_ random!
+
+FUNC_7453459449_1_1:
+    description:  That was a nice try, but an attacker can still exploit this code.
+
+FUNC_7453459449_1_2:
+    description:  Are you forgetting to initialize the random generator?
+
+FUNC_7453459449_1_3:
+    description:  Consider that this function will be called several times...
+
+FUNC_7453459449_2_1:
+    description:  It seems that you are trying to initialize the random number generator, but not well enough
+
+FUNC_7453459449_2_2:
+    description:  Looks like you are trying to initialize always with the same value. Aren't there better ways?
+
+FUNC_7453459449_A_1:
+    description:  You are on a good way, but this is still not enough
+
+FUNC_7453459449_A_2:
+    description:  Try more robust ways to initialize the random number generator
+
+FUNC_7453459449_A_3:
+    description: Have a look at this <a href='{link}' target='_blank'>link</a>
+    link: https://wiki.sei.cmu.edu/confluence/display/c/MSC30-C.+Do+not+use+the+rand%28%29+function+for+generating+pseudorandom+numbers
+
+################################################
+# Pizza Challenge
+FUNC_1362465447_1:
+    description: have a close look at the source code
+
+FUNC_1362465447_2:
+    description: look more carefully in utilities.c
+
+################################################
+# gets is a dangerous function
+FUNC_1246832686_A_1:
+    description: Imagine that there are other functions in the program that also read from STDIN...
+
+FUNC_1246832686_A_2:
+    description: The function you wrote cannot synchronize with other functions reading from STDIN
+
+FUNC_1246832686_A_3:
+    description: The root cause of the problem - are you reading everything until a newline?
+
+FUNC_1246832686_A_4:
+    description: Look at here <a href='{link}' target='_blank'>FIO20-C</a>
+    link: https://wiki.sei.cmu.edu/confluence/pages/viewpage.action?pageId=87152445
+
+FUNC_1246832686_B_1:
+    description: You are using a function that has been banned in the latest C11 standard
+
+FUNC_1246832686_B_2:
+    description: gets() was banned because it cannot be used securely. For more information look here here - <a href='{link}' target='_blank'>STR31-C</a>
+    link: https://wiki.sei.cmu.edu/confluence/display/c/STR31-C.+Guarantee+that+storage+for+strings+has+sufficient+space+for+character+data+and+the+null+terminator
+
+################################################
+# 0007 buffer-under-read
+
+GET_INDEX_OF_RIGHTMOST_CHAR_1:
+    description: Make sure you are not reading out of bounds of the passed string.
+    
+GET_INDEX_OF_RIGHTMOST_CHAR_2:
+    description: The initial code has a buffer under-read issue.
+
+################################################
+# 0009 power-mod
+
+POWER_MOD_DIVISION_BY_ZERO:
+    description: Look at the comment above the function definition. It tells you what to return for each case.
+
+POWER_MOD_SIGNED_OVERFLOW_1:
+    description: Hint -> (a*b) mod n = (a mod n)*(b mod n)
+
+POWER_MOD_SIGNED_OVERFLOW_2:
+    description: Hint -> a^p mod n = (a mod n)*(a mod n)*(a mod n)*... (p times)
+
+################################################
+# 0010 max-in-array
+
+MAX_IN_ARRAY_UNSIGNED_OVERFLOW_1:
+    description: Remember we are dealing with unsigned numbers.
+
+MAX_IN_ARRAY_UNSIGNED_OVERFLOW_2:
+    description: The initial code has an unsigned overflow problem.
+
+MAX_IN_ARRAY_UNSIGNED_OVERFLOW_3:
+    description: What happens when you subtract a bigger unsigned integer from a smaller one?
+
+################################################
+# 0011 max greater by k in array
+
+MAX_GREATER_BY_K_IN_ARRAY__IF_SEMICOLON_1:
+    description: What is a common mistake people make when writing if conditions?
+
+MAX_GREATER_BY_K_IN_ARRAY__IF_SEMICOLON_2:
+    description: Perhaps there is an issue with the if conditions in your code.
+
+
+MAX_GREATER_BY_K_IN_ARRAY__SINGLE_ELEMENT:
+    description: Have you made sure to cover every edge case as mentioned in the readme.txt file?
+
+
+MAX_GREATER_BY_K_IN_ARRAY__UNSIGNED_OVERFLOW_1:
+    description: When can subtracting two unsigned numbers do something unintended?
+
+MAX_GREATER_BY_K_IN_ARRAY__UNSIGNED_OVERFLOW_2:
+    description: When is it safe to subtract two unsigned numbers? 
+
+MAX_GREATER_BY_K_IN_ARRAY__UNSIGNED_OVERFLOW_LAST_IF_CONDITION:
+    description: Remember there are cases where subtracting unsigned numbers is okay.
+
+
+################################################
+# 0012 char test
+
+CHAR_TEST__RANGE_TEST_WITHOUT_AND_OPERATOR_INSIDE_IF_1:
+    description: Look at how the if conditions are written.
+
+CHAR_TEST__RANGE_TEST_WITHOUT_AND_OPERATOR_INSIDE_IF_2:
+    description: Are you sure you are testing whether c is a letter correctly?
+
+CHAR_TEST__RANGE_TEST_WITHOUT_AND_OPERATOR_INSIDE_IF_3:
+    description: What is the correct way to combine multiple conditions inside an if statement?
+
+
+CHAR_TEST__ASSIGNING_TO_EOF_INSIDE_IF_1:
+    description: Are you sure all your if conditions do what they are supposed to?
+
+CHAR_TEST__ASSIGNING_TO_EOF_INSIDE_IF_2:
+    description: Maybe look at the end-of-file check.
+
+CHAR_TEST__ASSIGNING_TO_EOF_INSIDE_IF_3:
+    description: How do we test for equality inside an if condition?
+
+
+CHAR_TEST__GETCHAR_1:
+    description: Are you sure there are no unintended type conversions in your program?
+
+CHAR_TEST__GETCHAR_2:
+    description: Reading the documentation of getchar() might help here.
+
+CHAR_TEST__GETCHAR_3:
+    description: What is the range of the char type? What are the possible values returned by getchar()?
+
+CHAR_TEST__GETCHAR_4:
+    description: What does the C standard say about the value of the macro EOF?
+
+################################################
+# 0013 format string
+FORMAT_STRING__PRINTF_1:
+    description: Imagine the attacker could control what the strings passed to this function are
+
+FORMAT_STRING__PRINTF_2:
+    description: Perhaps there is a problem with the printf's?
+
+FORMAT_STRING__PRINTF_3:
+    description: What can happen when a call such as printf("%s") is made?
+
+
+FORMAT_STRING__STRING_EQUALITY_1:
+    description: Is the program doing what you expect it to do?
+
+FORMAT_STRING__STRING_EQUALITY_2:
+    description: Maybe there is a problem with the if condition?
+
+FORMAT_STRING__STRING_EQUALITY_3:
+    description: How do you check for string equality?
+
+################################################
+# 0014 copy strings
+
+COPY_STRINGS__N_EQUAL_TO_ZERO_EDGE_CASE_1:
+    description: Hmmm, make sure to read the comments above the function
+
+COPY_STRINGS__N_EQUAL_TO_ZERO_EDGE_CASE_2:
+    description: What are the possible values of the parameters being passed to the function?
+
+COPY_STRINGS__N_EQUAL_TO_ZERO_EDGE_CASE_3:
+    description: Can n have a "bad" value for this function?
+
+COPY_STRINGS__N_EQUAL_TO_ZERO_EDGE_CASE_4:
+    description: What happens when n = 0?
+
+################################################
+# 0015 command injection
+
+COMMAND_INJECTION__VULNERABILITY_1:
+    description: Keep looking!
+
+COMMAND_INJECTION__VULNERABILITY_2:
+    description: Remember "colour" can by any arbitrary string.
+
+COMMAND_INJECTION__VULNERABILITY_3:
+    description: Is it possible to append something to the "colour" string to make it execute a command on a Linux system?
+
+COMMAND_INJECTION__VULNERABILITY_4:
+    description: Hint - "echo hello world; echo hi" will execute two commands. Note this is not the only way to execute multiple commands!
+
+################################################
+# test/009/p1
+FUNC_8948618040_A_1:
+    description: In order to have an effective exploit, an attacker does not necessarely need to overwrite the return address of a function.
+
+FUNC_8948618040_A_2:
+    description: Typically, the sequence in which local variables are stored in the stack is, in increasing memory addresses, from the last to the first variable (i.e. closest to the function definition)
+
+################################################
+#0016 - TIMING
+TIMING_1:
+    description: Have you heard about side-channel attacks, such as <a href='{link}' target='_blank'>timing</a>
+    link: https://en.wikipedia.org/wiki/Timing_attack 
+TIMING_2:
+    description: Sorting algorithm should have the same execution time no matter how well the input vector is sorted...
+    
+TIMING_3:
+    description: Let's forget about compiler's optimization and add "dummy" instructions in order to get the same execution time
+
+SORTING:
+    description: Try to learn more about <a href='{link}' target='_blank'>sorting algorithms</a>
+    link: https://www.geeksforgeeks.org/sorting-algorithms/
+
+
+#################################################
+# 0017 -> Dangling reference
+FACTORY_COMPLEX_INDEX_1:
+    description: Have a look at this <a href='{link}' target='_blank'>link</a>
+    link: https://wiki.sei.cmu.edu/confluence/display/cplusplus/CTR50-CPP.+Guarantee+that+container+indices+and+iterators+are+within+the+valid+range
+FACTORY_COMPLEX_INDEX_2:
+    description: You are trying to access a memory place which you haven't allocated...
+
+
+FACTORY_COMPLEX_ALLOCATION_1:
+    description: Think about the lifetime of variables...
+
+FACTORY_COMPLEX_ALLOCATION_2:
+    description: What happeneds to the memory after a function call has finished?
+
+FACTORY_COMPLEX_ALLOCATION_3:
+    description: Take a look at <a href='{link}' target='_blank'>referenece to a local variable</a>
+    link: https://stackoverflow.com/questions/4643713/c-returning-reference-to-local-variable
+
+
+FACTORY_COMPLEX_DEALLOCATION_1:
+    description: What always comes with a NEW operator? - DELETE, right?
+
+FACTORY_COMPLEX_DEALLOCATION_2:
+    description: Maybe <a href='{link}' target='_blank'>destructors</a> is something that you are looking for...
+    link: https://www.geeksforgeeks.org/destructors-c/
+
+FACTORY_COMPLEX_DEALLOCATION_DOUBLE:
+    description: Properly <a href='{link}' target='_blank'>deallocate</a> dynamically allocated resources
+    link: https://wiki.sei.cmu.edu/confluence/display/cplusplus/MEM51-CPP.+Properly+deallocate+dynamically+allocated+resources
+
+#Can be edited further 
+FACTORY_COMPLEX_DEALLOCATION_MISSMATCH:
+    description: Properly <a href='{link}' target='_blank'>deallocate</a> dynamically allocated resources
+    link: https://wiki.sei.cmu.edu/confluence/display/cplusplus/MEM51-CPP.+Properly+deallocate+dynamically+allocated+resources
+
+#0018_inheritance
+INHERITANCE_DEALLOCATION_1:
+    description: What always comes with a NEW operator? - DELETE, right? 
+
+INHERITANCE_DEALLOCATION_2:
+    description: Is the destructor of derived class called?
+
+INHERITANCE_DEALLOCATION_3:
+    description: Have a look at the output or <a href='{link}' target='_blank'>at this source</a>
+    link: https://www.studytonight.com/cpp/virtual-destructors.php
+

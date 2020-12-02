@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+int get_y_no( void ) {
+    char    *buffer        = NULL;
+    size_t   line_buf_size = 0;
+    int      line_count    = 0;
+    int      result        = 0;
+    ssize_t  line_size;
+
+    line_size = getline(&buffer, &line_buf_size, stdin);
+    if (line_size==0)
+        result = 0;
+    else
+        if ( (buffer[0]=='y') || (buffer[0]=='Y') )
+            result = 1;
+    free(buffer);
+    return result;
+}
+

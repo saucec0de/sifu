@@ -1,0 +1,11 @@
+#
+# Copyright (c) Siemens AG, 2020
+#     tiago.gasiba@gmail.com
+#
+# SPDX-License-Identifier: MIT
+#
+func.o: func.cpp
+	@echo "[$(COLOR_RED)SPECIAL$(COLOR_OFF)]: Compiling C++ file: $^"
+	@$(CPPC) $(EXTRAOPTS) -O2 -c $< -o $@ 2>> $(COMPILEFILE)                || true
+	@$(CPPC) $(EXTRAOPTS) -O2 -c -S -masm=intel $< 2> /dev/null > /dev/null || true
+	@$(CPPC) $(EXTRAOPTS) -O2 -fpreprocessed -dD -E $< > $<.pp 2> /dev/null || true

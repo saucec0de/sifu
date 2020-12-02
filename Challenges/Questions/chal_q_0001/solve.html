@@ -1,0 +1,16 @@
+{%
+  if ( (post.boxes[0].box_1=="item_1") and
+       (post.boxes[0].box_2=="item_4") and
+       (post.boxes[0].box_3=="item_7") and
+       (post.boxes[0].box_4=="item_8") and
+       (post.boxes[0].box_5=="item_2") and
+       (post.boxes[0].box_6=="item_6") and
+       (post.boxes[0].box_7=="item_3") and
+       (post.boxes[0].box_8=="item_5") )
+%}
+  <h1>Well Done!</h1><br>
+  Here is your flag: {{cfg.flag}}
+{% else %}
+  <!-- FAIL -->
+  Nay :-(
+{% endif %}

@@ -1,0 +1,10 @@
+#!/bin/bash
+# Copyright (c) Siemens AG, 2020
+#           tiago.gasiba@gmail.com
+
+if [[ "$1" = "-c" && "$2" = "red" && "$#" -eq 2 ]]; then
+    exit 1
+else
+    exit 1
+fi
+    

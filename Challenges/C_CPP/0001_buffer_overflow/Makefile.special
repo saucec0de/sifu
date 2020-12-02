@@ -1,0 +1,18 @@
+#
+# Copyright (c) Siemens AG, 2020
+#     tiago.gasiba@gmail.com
+#
+# SPDX-License-Identifier: MIT
+#
+func.o: func.c
+ifeq (,$(wildcard ./main.c))
+	@echo "[$(COLOR_RED)SPECIAL$(COLOR_OFF)]: Compiling C file (with C++ compiler): $^"
+	@$(CPPC) $(EXTRAOPTS) -c $< -o $@ 2>> $(COMPILEFILE)                || true
+	@$(CPPC) $(EXTRAOPTS) -c -S -masm=intel $< 2> /dev/null > /dev/null || true
+	@$(CPPC) $(EXTRAOPTS) -fpreprocessed -dD -E $< > $<.pp 2> /dev/null || true
+else
+	@echo "[$(COLOR_RED)SPECIAL$(COLOR_OFF)]: Compiling C file: $^"
+	@$(CC) $(COPTS) $(EXTRAOPTS) -c $< -o $@ 2>> $(COMPILEFILE)                || true
+	@$(CC) $(COPTS) $(EXTRAOPTS) -c -S -masm=intel $< 2> /dev/null > /dev/null || true
+	@$(CC) $(COPTS) $(EXTRAOPTS) -fpreprocessed -dD -E $< > $<.pp 2> /dev/null || true
+endif

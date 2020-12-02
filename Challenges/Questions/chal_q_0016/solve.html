@@ -1,0 +1,14 @@
+{%
+  if ( ("false"  == post.selection_A1[0]) and
+       ("false" == post.selection_A2[0]) and
+       ("true" == post.selection_A3[0]) and
+       ("false" == post.selection_A4[0]) and
+       ("true"  == post.selection_A5[0]) )
+%}
+  <h1>Well Done!</h1><br>
+  <h2>Moreeeeeee infoooo</h2><br>
+  Here is your flag: {{cfg.flag}}
+{% else %}
+  <!-- FAIL -->
+  Nay :-(
+{% endif %}

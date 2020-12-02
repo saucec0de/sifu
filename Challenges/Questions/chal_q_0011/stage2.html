@@ -1,0 +1,80 @@
+{%
+if ( ("false"  == post.selection_A1[0]) and
+     ("true" == post.selection_A2[0]) and
+     ("false" == post.selection_A3[0]) and
+     ("true"  == post.selection_A4[0]) )
+%}
+<h2>That is correct!</h2> <h2>Now consider again the function: </h2> 
+      <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;font-size:20px;"><pre style="margin: 0; line-height: 125%"><span style="color: #333399; font-weight: bold">int</span> <span style="color: #0066BB; font-weight: bold">get_next_even_number</span>(<span style="color: #333399; font-weight: bold">void</span>) {
+    <span style="color: #008800; font-weight: bold">static</span> <span style="color: #333399; font-weight: bold">int</span> number <span style="color: #333333">=</span> <span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">2</span>;
+    
+    number <span style="color: #333333">+=</span> <span style="color: #0000DD; font-weight: bold">2</span>;
+    
+    <span style="color: #008800; font-weight: bold">return</span> number;
+}
+</pre></div>
+      <br>
+      
+      <h2>and the following macro definitions:</h2>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;font-size:20px;"><pre style="margin: 0; line-height: 125%">
+<span style="color: #557799">#define min(X, Y) ((X) &lt; (Y) ? (X) : (Y))</span>
+<span style="color: #557799">#define average(x,y) (((x)+(y))/2.0)</span>
+<span style="color: #557799">#define square(x) ((x)*(x))</span>
+<span style="color: #557799">#define plus_one(x) ((x)+1)</span>
+</pre></div>
+        <br>
+
+        <h2>Which statement will <b>not</b> cause any unintended behavior?
+          </h2>
+      <h3>
+        Again assume no overflows.
+      </h3>
+      <br>
+        <form >
+            <input type="checkbox" name="choice" value="A1"> Statement 1
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;font-size:20px;"><pre style="margin: 0; line-height: 125%">
+result <span style="color: #333333">=</span> min(<span style="color: #0000DD; font-weight: bold">10</span>, get_next_even_number(x));
+</pre></div>
+            <br><input type="checkbox" name="choice" value="A2"> Statement 2
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;font-size:20px;"><pre style="margin: 0; line-height: 125%">
+result <span style="color: #333333">=</span> average(<span style="color: #0000DD; font-weight: bold">10</span>, get_next_even_number(x));
+</pre></div>
+            <br><input type="checkbox" name="choice" value="A3"> Statement 3
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;font-size:20px;"><pre style="margin: 0; line-height: 125%">
+result <span style="color: #333333">=</span> square(get_next_even_number(x));
+</pre></div>
+            <br><input type="checkbox" name="choice" value="A4"> Statement 4
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;font-size:20px;"><pre style="margin: 0; line-height: 125%">
+result <span style="color: #333333">=</span> plus_one(get_next_even_number(x));
+</pre></div>
+        </form>
+        <br>
+        
+  <script>
+      unlockLink = "./{{chalID}}/unlock_file/{{cfg.unlock_codes[0]}}";
+      console.log("Unlock: " + unlockLink);
+      $.get( unlockLink );
+      $("#submitclick").prop("onclick", null).off("click")
+      $("#submitclick").on("click", submitAnswerStage2);
+
+      function submitAnswerStage2() {
+        var choices = document.getElementsByName("choice");
+        var sel     = {};
+
+        for( i=0; i<choices.length; i++ ) {
+          ansKey      = choices[i].value;
+          ansVal      = choices[i].checked;
+          sel[ansKey] = ansVal;
+          console.log("SubtmitAnswerStage2",i,sel);
+        }
+        $.post( "./{{chalID}}/file/done.html", { "selection": sel })
+         .done(function( retHtmlCode ) {
+             $("#main").html(retHtmlCode);
+        });
+      }
+  </script>
+        
+{% else %}
+  <!-- FAIL -->
+  Nay :-(
+{% endif %}

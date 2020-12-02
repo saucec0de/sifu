@@ -1,0 +1,90 @@
+[
+  {
+    "tc": "TEST_100001",
+    "msg": "the stack was not properly cleaned",
+    "expect": "",
+    "seen": "",
+    "tag": "MEMSET_S_1",
+    "result": "FAIL"
+  },
+  {
+    "tc": "TEST_90",
+    "msg": "ERROR: could not find the 'ConnectToServer' function declaration",
+    "expect": "",
+    "seen": "",
+    "tag": "FUNC_NOT_FOUND",
+    "result": "OK"
+  },
+  {
+    "tc": "TEST_90",
+    "msg": "ERROR: found too many 'ConnectToServer' function declarations",
+    "expect": "",
+    "seen": "",
+    "tag": "",
+    "result": "OK"
+  },
+  {
+    "tc": "TEST_90",
+    "msg": "ERROR: could not find the '_main' function declaration",
+    "expect": "",
+    "seen": "",
+    "tag": "",
+    "result": "OK"
+  },
+  {
+    "tc": "TEST_90",
+    "msg": "ERROR: found too many '_main' function declarations",
+    "expect": "",
+    "seen": "",
+    "tag": "",
+    "result": "OK"
+  },
+  {
+    "tc": "TEST_90",
+    "msg": "ERROR: could not find 'ConnectToServer' function declaration",
+    "expect": "",
+    "seen": "",
+    "tag": "",
+    "result": "OK"
+  },
+  {
+    "tc": "TEST_90",
+    "msg": "ERROR: line with pwd variable has been changed",
+    "expect": "",
+    "seen": "",
+    "tag": "",
+    "result": "OK"
+  },
+  {
+    "tc": "TEST_90",
+    "msg": "ERROR: there are several pwd variables defined",
+    "expect": "",
+    "seen": "",
+    "tag": "",
+    "result": "OK"
+  },
+  {
+    "tc": "TEST_90",
+    "msg": "ERROR: could not find '_main' function declaration",
+    "expect": "",
+    "seen": "",
+    "tag": "",
+    "result": "OK"
+  },
+  {
+    "tc": "TEST_90",
+    "msg": "ERROR: could not find return from '_main' function",
+    "expect": "",
+    "seen": "",
+    "tag": "",
+    "result": "OK"
+  },
+  {
+    "tc": "TEST_90",
+    "msg": "ERROR: found too many returns from '_main' function",
+    "expect": "",
+    "seen": "",
+    "tag": "",
+    "result": "OK"
+  }
+]

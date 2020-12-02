@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+    <header>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Secure Coding 师父</title>
+        <link href="/static/bootstrap.min.css" rel="stylesheet">
+        <link href="/static/navbar-fixed-top.css" rel="stylesheet">
+        <script src="/static/jquery-3.4.1-min.js"></script>
+        <script src="/static/bootstrap.min.js"></script>
+        <script src="/static/displace.min.js"></script>
+        <script src="./{{chalID}}/file/sifu_q.js"></script>
+    </header>
+    <body style="min-height:600px">
+        <nav class="navbar navbar-light bg-light fixed-top">
+                <div class="font-weight-bold">
+                    师父
+                    <button onclick="submitAnswer()" class="btn bg-success my-2 my-sm-0 ml-4" type="button" id="submitclick">Submit</button>
+                    <button onclick="submitReport()" class="btn bg-warning my-2 my-sm-0" type="button" id="submitload">Report Challenge</button>
+                </div>
+                <div class="ml-auto">
+                    <button onclick="submitLoad()" class="btn bg-primary my-2 my-sm-0" type="button" id="submitload">Reload</button>
+                    <button onclick="window.location.href='/'" class="btn btn-outline-primary my-2 my-sm-0 ml-4" type="button">Main</button>
+                    <button class="btn bg-danger ml-4 my-2 my-sm-0" onclick="window.location.href='/logout'" >Logout</button>
+                </div>
+        </nav>
+        <!-- input box modal dialog -->
+        <div class="container">
+            <div class="modal fade" id="inputDataModal" tabindex="-1" role="dialog" aria-labelledby="inputDataModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="inputDataModalLabel">Report Problem with a Challenge</h5>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group row">
+                                <label for="message-text" class="col-sm-10 col-form-label">Please enter a short description of the problem</label>
+                                <textarea class="form-control" id="message-text"></textarea>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn bg-primary text-white" id="modal-btn-send">Submit</button>
+                                    <button type="button" class="btn bg-secondary text-white" id="modal-btn-cancel">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="main">
+            <div style="width:720px; height=700px; margin:auto">
+                <br>
+                <div style="width:720px;height:420px;background-color:lightgray; position:relative">
+                    <div id="box1" style="top:   90px; left: 290px; width:200px; height:70px; position: relative; background-color:darkgray;"></div>
+                    <div id="box2" style="top:   20px; left: 500px; width:200px; height:70px; position: relative; background-color:darkgray;"></div>
+                    <div id="box3" style="top:   30px; left: 290px; width:200px; height:70px; position: relative; background-color:darkgray;"></div>
+                    <div id="box4" style="top:  -40px; left: 500px; width:200px; height:70px; position: relative; background-color:darkgray;"></div>
+                    <div id="box5" style="top:  -30px; left: 290px; width:200px; height:70px; position: relative; background-color:darkgray;"></div>
+                    <div id="box6" style="top: -100px; left: 500px; width:200px; height:70px; position: relative; background-color:darkgray;"></div>
+                    <div id="box7" style="top:  -90px; left: 290px; width:200px; height:70px; position: relative; background-color:darkgray;"></div>
+                    <div id="box8" style="top: -160px; left: 500px; width:200px; height:70px; position: relative; background-color:darkgray;"></div>
+                    <div           style="top: -470px; left:  20px; width:250px; height:70px; text-align:center; justify-content:center; display:flex; align-items:center; position: relative; background-color:dimgray;">Who will analyse the log files?</div>
+                    <div           style="top: -460px; left:  20px; width:250px; height:70px; text-align:center; justify-content:center; display:flex; align-items:center; position: relative; background-color:dimgray;">When is logging active?</div>
+                    <div           style="top: -450px; left:  20px; width:250px; height:70px; text-align:center; justify-content:center; display:flex; align-items:center; position: relative; background-color:dimgray;">What is the content of a log message</div>
+                    <div           style="top: -440px; left:  20px; width:250px; height:70px; text-align:center; justify-content:center; display:flex; align-items:center; position: relative; background-color:dimgray;">How long are the log messages useful?</div>
+                    <div           style="top: -830px; left: 290px; width:200px; height:70px; text-align:center; justify-content:center; display:flex; align-items:center; position: relative; background-color:dimgray;">Audit Logs</div>
+                    <div           style="top: -900px; left: 500px; width:200px; height:70px; text-align:center; justify-content:center; display:flex; align-items:center; position: relative; background-color:dimgray;">Debugging Logs</div>
+                </div>
+                <div style="border-style: dashed; width:720px; height:100px; position:relative">
+                    <div id="drag_1" class="moveable1" style="top:10px; left:20px;  width:160px; float:left; position:relative; background-color:limegreen; text-align:center; cursor:default">Security Personal</div>
+                    <div id="drag_2" class="moveable5" style="top:40px; left:20px;  width:160px; float:left; position:relative; background-color:limegreen; text-align:center; cursor:default">Activities, Errors and Possible Attacks</div>
+                    <div id="drag_3" class="moveable6" style="top:10px; left:190px;  width:160px; float:left; position:relative; background-color:limegreen; text-align:center; cursor:default">Years</div>
+                    <div id="drag_4" class="moveable4" style="top:40px; left:190px; width:160px; float:left; position:relative; background-color:limegreen; text-align:center; cursor:default">Developers and Administrators</div>
+                    <div id="drag_5" class="moveable8" style="top:10px; left:360px; width:160px; float:left; position:relative; background-color:limegreen; text-align:center; cursor:default">Hours or Days</div>
+                    <div id="drag_6" class="moveable7" style="top:40px; left:360px; width:160px; float:left; position:relative; background-color:limegreen; text-align:center; cursor:default">Debug Information and Error messages</div>
+                    <div id="drag_7" class="moveable2" style="top:10px; left:530px;  width:160px; float:left; position:relative; background-color:limegreen; text-align:center; cursor:default">Always</div>
+                    <div id="drag_8" class="moveable3" style="top:40px; left:530px; width:160px; float:left; position:relative; background-color:limegreen; text-align:center; cursor:default">While searching for errors</div>
+                </div>
+            </div>
+        </div>
+        <script>
+const elements = [  '.moveable1' 
+    ,'.moveable2' 
+    ,'.moveable3' 
+    ,'.moveable4' 
+    ,'.moveable5' 
+    ,'.moveable6' 
+    ,'.moveable7' 
+    ,'.moveable8' 
+];
+
+var myTimer = setInterval(myTimerFunction, {{hbTimer}});
+
+elements.forEach(elClass => {
+    var _el = document.querySelector(elClass);
+    window.displacejs(_el);
+} );
+
+function submitLoad(){
+    location.reload()
+}
+
+var inputModalConfirm = function (callback) {
+    $("#modal-btn-send").on("click", function () {
+        callback(true);
+        $("#inputDataModal").modal('hide');
+        $("#modal-btn-send").off();
+        $("#modal-btn-cancel").off();
+    });
+    $("#modal-btn-cancel").on("click", function () {
+        callback(false);
+        $("#inputDataModal").modal('hide');
+        $("#modal-btn-send").off();
+        $("#modal-btn-cancel").off();
+    });
+};
+
+function submitReport(){
+    var textContent = "";
+    $("#message-text").val("")
+    $("#inputDataModal").modal()
+    inputModalConfirm(function (confirm) {
+        if (confirm) {
+            reportMessage = $("#message-text").val()
+            console.log("YES: " + reportMessage);
+            $.post("./{{chalID}}/report", { "usercontent": textContent, "message":reportMessage })
+                .done(function (data) {
+                    $("#testid").html(data);
+                });
+        }
+    });
+}
+
+function boxContent() {
+    var boxes = {};
+    for (let itm=1; itm<=8; itm++) {
+        for (let box=1; box<=8; box++) {
+            elID  = "#drag_"+itm.toString();
+            boxID = "#box"+box.toString();
+            if (elInsideEl(elID,boxID)) {
+                bString = "box_"+box.toString();
+                iString = "item_"+itm.toString()
+                if (bString in boxes) {
+                    boxes[bString] = boxes[bString] + "," + iString;
+                } else {
+                    boxes[bString] = iString;
+                }
+            }
+        }
+    }
+    return boxes;
+}
+
+function submitAnswer() {
+    boxes = boxContent();
+    boxesS = JSON.stringify(boxes);
+    $.post( "./{{chalID}}/file/solve.html", { "boxes": boxesS } )
+        .done(function( retHtmlCode ) {
+            $("#main").html(retHtmlCode);
+        });
+}
+
+function myTimerFunction() {
+    $.get( {url:"./{{chalID}}/hints", cache:false}, {"heartbeat":true}, function( data ) {
+        $("#hints").html(data["hints"]);
+    });
+}
+        </script>
+    </body>
+</html>

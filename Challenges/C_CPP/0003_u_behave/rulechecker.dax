@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dax mode="rulechecker" comment-mode="AAL" version="1.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.absint.com/dtd/a3-dax-20.04.xsd" xmlns="http://www.absint.com/dax">
+    <name>CppTemplate</name>
+    <description>2020-07-23</description>
+    <abi>
+        <alignof_attributed_pointer_1>4</alignof_attributed_pointer_1>
+        <alignof_attributed_pointer_2>4</alignof_attributed_pointer_2>
+        <alignof_attributed_pointer_3>4</alignof_attributed_pointer_3>
+        <alignof_bool>1</alignof_bool>
+        <alignof_char_array>1</alignof_char_array>
+        <alignof_double>8</alignof_double>
+        <alignof_float>4</alignof_float>
+        <alignof_function_pointer>4</alignof_function_pointer>
+        <alignof_int>4</alignof_int>
+        <alignof_long>4</alignof_long>
+        <alignof_long_double>8</alignof_long_double>
+        <alignof_long_long>8</alignof_long_long>
+        <alignof_pointer>4</alignof_pointer>
+        <alignof_short>2</alignof_short>
+        <atomic_attributed_pointer_1>no</atomic_attributed_pointer_1>
+        <atomic_attributed_pointer_2>no</atomic_attributed_pointer_2>
+        <atomic_attributed_pointer_3>no</atomic_attributed_pointer_3>
+        <atomic_bool>no</atomic_bool>
+        <atomic_char>no</atomic_char>
+        <atomic_double>no</atomic_double>
+        <atomic_float>no</atomic_float>
+        <atomic_function_pointer>no</atomic_function_pointer>
+        <atomic_int>no</atomic_int>
+        <atomic_long>no</atomic_long>
+        <atomic_long_double>no</atomic_long_double>
+        <atomic_long_long>no</atomic_long_long>
+        <atomic_pointer>no</atomic_pointer>
+        <atomic_short>no</atomic_short>
+        <bitfield_sign>signed</bitfield_sign>
+        <bits_of_byte>8</bits_of_byte>
+        <bits_of_char>8</bits_of_char>
+        <char16_t>unsigned short</char16_t>
+        <char32_t>unsigned int</char32_t>
+        <char_sign>unsigned</char_sign>
+        <endianness>big</endianness>
+        <enum_preferred_sign>signed</enum_preferred_sign>
+        <enum_preferred_size>int</enum_preferred_size>
+        <intmax_t>long long int</intmax_t>
+        <intptr_t>long int</intptr_t>
+        <max_atomic_width>0</max_atomic_width>
+        <pointer_attributes_1 />
+        <pointer_attributes_2 />
+        <pointer_attributes_3 />
+        <ptrdiff_t>long int</ptrdiff_t>
+        <rounding_mode>all</rounding_mode>
+        <sig_atomic_t>int</sig_atomic_t>
+        <size_t>long unsigned int</size_t>
+        <sizeof_attributed_pointer_1>4</sizeof_attributed_pointer_1>
+        <sizeof_attributed_pointer_2>4</sizeof_attributed_pointer_2>
+        <sizeof_attributed_pointer_3>4</sizeof_attributed_pointer_3>
+        <sizeof_bool>1</sizeof_bool>
+        <sizeof_double>8</sizeof_double>
+        <sizeof_float>4</sizeof_float>
+        <sizeof_function_pointer>4</sizeof_function_pointer>
+        <sizeof_int>4</sizeof_int>
+        <sizeof_long>4</sizeof_long>
+        <sizeof_long_double>8</sizeof_long_double>
+        <sizeof_long_long>8</sizeof_long_long>
+        <sizeof_pointer>4</sizeof_pointer>
+        <sizeof_short>2</sizeof_short>
+        <unaligned_dereference>error</unaligned_dereference>
+        <wchar_t>int</wchar_t>
+        <wint_t>int</wint_t>
+    </abi>
+    <rulechecks name="Configuration">
+        <rules>
+            <A.5.1>yes</A.5.1>
+            <A.6.>yes</A.6.>
+            <AUTOSAR.>yes</AUTOSAR.>
+            <M2008.>yes</M2008.>
+        </rules>
+        <checks />
+    </rulechecks>
+    <preprocess>
+        <keep-comments>no</keep-comments>
+        <clibrary>yes</clibrary>
+        <remove-analysis-files>no</remove-analysis-files>
+        <use-internal-preprocessor>yes</use-internal-preprocessor>
+        <base>.</base>
+        <config name="Default configuration">
+            <language>C++</language>
+            <files>
+                <file>func_6610374294.cpp</file>
+            </files>
+        </config>
+    </preprocess>
+    <coverage-ignore>
+        <file>preprocessed/astree_internal/clibrary/src/clib.c</file>
+    </coverage-ignore>
+</dax>

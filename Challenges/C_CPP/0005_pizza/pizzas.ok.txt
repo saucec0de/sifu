@@ -1,0 +1,14 @@
+599, Margherita: Tomato sauce, mozzarella, and oregano
+739, Marinara: Tomato sauce, garlic and basil
+879, Quattro Stagioni: Tomato sauce, mozzarella, mushrooms, ham, artichokes, olives, and oregano
+749, Carbonara: Tomato sauce, mozzarella, parmesan, eggs, and bacon
+999, Frutti di Mare: Tomato sauce and seafood
+759, Quattro Formaggi: Tomato sauce, mozzarella, parmesan, gorgonzola, artichokes, and oregano
+699, Crudo: Tomato sauce, mozzarella and Parma ham
+849, Napoli: Tomato sauce, mozzarella, oregano, anchovies
+849, Pugliese: Tomato sauce, mozzarella, oregano, and onions
+779, Montanara: Tomato sauce, mozzarella, mushrooms, pepperoni, and Stracchino
+629, Emiliana: Tomato sauce, mozzarella, eggplant, boiled potatoes, and sausage
+639, Romana: Tomato sauce, mozzarella, anchovies, capers, and oregano
+729, Fattoria: Tomato sauce, mozzarella, peppers, peas, porchetta
+659, Schiacciata: Olive oil and rosemary

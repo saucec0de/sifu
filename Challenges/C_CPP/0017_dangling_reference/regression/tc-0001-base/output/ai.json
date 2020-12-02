@@ -1,0 +1,8 @@
+[
+    {
+        "tc": "TEST_50",
+        "msg": "Error is caused by a READ memory access. Address points to the zero page.",
+        "tag": "FACTORY_COMPLEX_ALLOCATION_1",
+        "result": "FAIL"
+    }
+]

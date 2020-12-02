@@ -1,0 +1,25 @@
+{% if "A1" == post.selection[0]  %}
+<h1>Well done!</h1>
+
+<h2>The problem with the other implementation was that the returned string could be modified. Of course, it is true that in the first implementation modifying the returned string would lead to undefined behavior which is bad. However, in practice, this will cause the program to crash (since string literals are generally allocated in the read-only data section) which will provide the user calling the function a useful diagnostic that there is something wrong with their code.</h2>
+<br>
+
+<h3> One more thing: it is a good idea to use a const-qualifier for the return type to indicate that the string should not be modified. (But beware of "const-poisoning" when working with existing code.)</h3>
+  
+  <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;font-size:20px;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">const</span> <span style="color: #333399; font-weight: bold">char</span><span style="color: #333333">*</span> <span style="color: #0066BB; font-weight: bold">greet_in_morning</span>(<span style="color: #333399; font-weight: bold">bool</span> english) {
+    <span style="color: #008800; font-weight: bold">if</span> (english)
+        <span style="color: #008800; font-weight: bold">return</span> <span style="background-color: #fff0f0">&quot;Good morning!&quot;</span>;
+    <span style="color: #008800; font-weight: bold">else</span>
+        <span style="color: #008800; font-weight: bold">return</span> <span style="background-color: #fff0f0">&quot;Guten Morgen!&quot;</span>;
+}
+</pre></div>
+
+<h3> See
+  <a target="_blank" rel="noopener noreferrer" href="https://wiki.sei.cmu.edu/confluence/display/c/STR05-C.+Use+pointers+to+const+when+referring+to+string+literals"> STR05-C. Use pointers to const when referring to string literals</a>.
+  </h3>
+<br>
+And here is your flag: {{cfg.flag}}
+{% else %}
+  <!-- FAIL -->
+  Nay :-(
+{% endif %}

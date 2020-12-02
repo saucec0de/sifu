@@ -1,0 +1,10 @@
+[
+    {
+        "tc": "TEST_100",
+        "msg": "ERROR (main.cpp,35): Memory leak",
+        "expect": "",
+        "seen": "",
+        "tag": "INHERITANCE_DEALLOCATION_1",
+        "result": "FAIL"
+    }
+]

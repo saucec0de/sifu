@@ -1,0 +1,8 @@
+[
+    {
+        "tc": "TEST_30",
+        "tag": "FUNC_NOT_FOUND",
+        "result": "FAIL",
+        "msg": "ERROR: Intercafe \"void sort(std::vector<int> &list)\" can not be changed/removed"
+    }
+]

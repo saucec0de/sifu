@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Signin With your Team Credentials</title>
+    <link href="/static/bootstrap.min.css" rel="stylesheet">
+    <link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAADTklEQVRYR+2XW2gUZxTHf9/M7OxuZpOYpiaNwcYkRFtN8X6hTVpoKpao0FANSvCl6kuggmChyIoPQryg1YeStpJSEK21NEVFY6CKF0QEiaCtGrVr6nVNUGuy2SQzm52VmVzIOlnjU+LDfo8zzDm/8z/f/wxHsDkm5U18ulEgVQM5jM4JxjBr797PrBF5e5/4hSRtGZ288VliprlJTKp79mgUK3+5zqAFEBuL6gdyJgGSCiQVSKjA6mI3Zx9EaO1K7NKQEf/uwwkKrWGTQLtpu2xetkJHJEbzs2hCpzsApmTIBMMmmxd4qb9tsGGO1/5YkaBwnMzN/mBGNMaKhs7BwJPSJOqXplJ1onMw4UcTFHZ+rLH+bJiLwd5hIRwA20tTONiss+p9NweadS639dFnuAX7Pvex9EjIEehtr+DQ4lR+/kfn12Y97v3MLIW9n2msPxPm/CMnxIgA0zIVSnIVXJJgdrbCxWDETnAkYNDQEqEgXaJuoY+jdwz2XO5xwHkVwfTxMj+U+ahqCHH9pXaMCLB8spum1l5a2qNsLdWoPtXJojwVAXx/pYcvClUyvYJfruk0VqRReTzEc73vbswYL/PdJxqf/tFBeb7Lbt/A/Ug4igdbMNXNgRs6FsDRgGH3daAFy4tUslMkG2Do+XauFz0aY3e/ErVlGlfaovz0t1OZEQHWfODhx6s9VL33+gAZHsGJijRWNoTI0SR2lGosrO+guzexkxwtsOx35n6EbaUa606HWTfT89oKWFVZLame7sGnCjacC3NhmIs3VLVh54Aqw+ll6ZQcaqemJMUBUDlZJcvrbIEVeOpbMr8tTqXdiFF5LGRb+lVnWIAvi1QW5Ch8c64L/3wvjf9FCDzvuwNWP1cXe9h+qTvO26mqYG2xhxVTVPwXuigaJ/NVsZtdTT38fkunNwGHAyDXJ9meXtUYoqV/or1qDljWrChUKc9X+euewa6mbtr6p+esLBn//BTe0SQO/2twOGBw6//4qegAsHxdkC5z8l6f3weO5hJ8PcPDtkvdcc/L3nVhTc8/b+s8TjC2Z2UpLClwsf+Gzp0hRVmBkn/DpAJJBd4IBcZ2Ncure+IXjNFyirlJ2Ot57tONQhrl9dw0a+8+zKx5AXE9pb68J6ViAAAAAElFTkSuQmCC" rel="icon" type="image/x-icon" />
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="/static/signin.css" rel="stylesheet">
+  </head>
+
+  <body class="text-center">
+    <form class="form-signin" action="" method="post">
+      <h1 class="h3 mb-3 font-weight-normal">Team Credentials</h1>
+      <label for="inputEmail" class="sr-only">Team Name</label>
+      <input type="text" class="form-control" name="username" placeholder="Team Name" required autofocus>
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" class="form-control" name="password" placeholder="Password" required>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      <div style="height:20px">
+        <span class="error text-danger">{{message}}</span>
+      </div>
+      <p class="mt-5 mb-3 text-muted">&copy; 2019-2020</p>
+    </form>
+  </body>
+
+</html>
+

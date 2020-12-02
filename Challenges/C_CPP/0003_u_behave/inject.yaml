@@ -1,0 +1,6 @@
+func.cpp:
+  - "#define __OVERWRITE"
+  - '#include "utils.h"'
+  - '#include "deprecated.h"'
+  - '#include "redirect.h"'
+  - '#include "log.h"'

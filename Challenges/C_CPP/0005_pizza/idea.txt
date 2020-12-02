@@ -1,0 +1,26 @@
+make the developer write more secure code that does not include some secure coding issues, namely:
+
+- ERR07-C. Prefer functions that support error checking over equivalent functions that don't
+  https://wiki.sei.cmu.edu/confluence/display/c/ERR07-C.+Prefer+functions+that+support+error+checking+over+equivalent+functions+that+don%27t
+  Developer should not use atoi()
+
+- ERR01-C. Use ferror() rather than errno to check for FILE stream errors
+  https://wiki.sei.cmu.edu/confluence/display/c/ERR01-C.+Use+ferror%28%29+rather+than+errno+to+check+for+FILE+stream+errors
+  remove any checks with errno
+
+- STR05-C. Use pointers to const when referring to string literals
+  https://wiki.sei.cmu.edu/confluence/display/c/STR05-C.+Use+pointers+to+const+when+referring+to+string+literals
+  make sure the participant adds "const" to the string "pizzaFileName"
+
+- INT08-C. Verify that all integer values are in range
+  https://wiki.sei.cmu.edu/confluence/display/c/INT08-C.+Verify+that+all+integer+values+are+in+range
+  Make sure the user handles potential integer overflow when addind a pizza to the basket
+  How to check: replace cost in pizzas.txt with large amount and order two pizzas. the program should not "crash"
+
+- EXP02-C. Be aware of the short-circuit behavior of the logical AND and OR operators
+  https://wiki.sei.cmu.edu/confluence/display/c/EXP02-C.+Be+aware+of+the+short-circuit+behavior+of+the+logical+AND+and+OR+operators
+  make sure that the participant rewrites the (1==nOrder) && printf as an if statement
+
+- EXP15-C. Do not place a semicolon on the same line as an if, for, or while statement
+  https://wiki.sei.cmu.edu/confluence/display/c/EXP15-C.+Do+not+place+a+semicolon+on+the+same+line+as+an+if%2C+for%2C+or+while+statement
+  Fix the bug in line "for (; ii<strlen(str1)-1; ii++); {" of utilities.c

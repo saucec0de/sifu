@@ -1,0 +1,10 @@
+
+=================================================================
+==3==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 100 byte(s) in 1 object(s) allocated from:
+    #0 0x55d2f9198eb7 in malloc (/chal/main+0xa8eb7)
+    #1 0x55d2f91dc443 in main /home/gasiba/Git/sifu/upload/91b582f8-9c2d-4a14-b547-2e711413f6c6/basic.c:5
+    #2 0x7f92772bd0b2 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x270b2)
+
+SUMMARY: AddressSanitizer: 100 byte(s) leaked in 1 allocation(s).

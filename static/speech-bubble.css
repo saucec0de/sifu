@@ -1,0 +1,39 @@
+.box3 {
+  width: 90%;
+  margin: 4px auto;
+  border-radius: 18px;
+  background: #00bfb6;
+  color: #fff;
+  padding: 15px;
+  text-align: left;
+  font-weight: 900;
+  font-family: arial;
+  font-size: smaller;
+  position: relative;
+}
+
+.sb13:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 15px solid #00bfb6;
+  border-right: 15px solid transparent;
+  border-top: 15px solid #00bfb6;
+  border-bottom: 15px solid transparent;
+  right: -16px;
+  top: 0px;
+}
+
+.sb14:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 15px solid transparent;
+  border-right: 15px solid #00bfb6;
+  border-top: 15px solid #00bfb6;
+  border-bottom: 15px solid transparent;
+  left: -16px;
+  top: 0px;
+}

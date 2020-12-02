@@ -1,0 +1,19 @@
+{%
+if ( ("false"  == post.selection_A1[0]) and
+     ("true" == post.selection_A2[0]) and
+     ("false" == post.selection_A3[0]) and
+     ("false"  == post.selection_A4[0]) )
+%}
+  <h1>Well Done!</h1><br>
+  
+  <h2>Read more on how to perform operations on signed integers securely:<br>
+    <a target="_blank" rel="noopener noreferrer" href="https://wiki.sei.cmu.edu/confluence/display/c/INT32-C.+Ensure+that+operations+on+signed+integers+do+not+result+in+overflow">
+      INT32-C. Ensure that operations on signed integers do not result in overflow.
+    </a>
+  </h2><br>
+  
+  Here is your flag: {{cfg.flag}}
+{% else %}
+  <!-- FAIL -->
+  Nay :-(
+{% endif %}

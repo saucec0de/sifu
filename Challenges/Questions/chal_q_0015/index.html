@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Secure Coding 师父</title>
+    <link href="/static/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/navbar-fixed-top.css" rel="stylesheet">
+    <script src="/static/jquery-3.4.1-min.js"></script>
+    <script src="/static/bootstrap.min.js"></script>
+  </head>
+
+  <body style="min-height:600px">
+    <nav class="navbar navbar-light bg-light fixed-top">
+        <div class="font-weight-bold">
+          师父
+          <button onclick="submitAnswer()" class="btn bg-success my-2 my-sm-0 ml-4" type="button" id="submitclick">Submit</button>
+          <button onclick="submitReport()" class="btn bg-warning my-2 my-sm-0" type="button" id="submitload">Report Challenge</button>
+        </div>
+        <div class="ml-auto">
+          <button onclick="submitLoad()" class="btn bg-primary my-2 my-sm-0" type="button" id="submitload">Reload</button>
+          <button onclick="window.location.href='/'" class="btn btn-outline-primary my-2 my-sm-0 ml-4" type="button">Main</button>
+          <button class="btn bg-danger ml-4 my-2 my-sm-0" onclick="window.location.href='/logout'" >Logout</button>
+        </div>
+    </nav>
+    <div class="container">
+    <div style="height: 10px"></div>
+
+    <!-- input box modal dialog -->
+    <div class="container">
+      <div class="modal fade" id="inputDataModal" tabindex="-1" role="dialog" aria-labelledby="inputDataModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="inputDataModalLabel">Report Problem with a Challenge</h5>
+            </div>
+            <div class="modal-body">
+              <div class="form-group row">
+                <label for="message-text" class="col-sm-10 col-form-label">Please enter a short description of the problem</label>
+                <textarea class="form-control" id="message-text"></textarea>
+                <div class="modal-footer">
+                  <button type="button" class="btn bg-primary text-white" id="modal-btn-send">Submit</button>
+                  <button type="button" class="btn bg-secondary text-white" id="modal-btn-cancel">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+    <div id="main">
+      <h2>Consider the following three functions in C:</h2>
+      <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;font-size:20px;"><pre style="margin: 0; line-height: 125%"><span style="color: #333399; font-weight: bold">int</span> <span style="color: #0066BB; font-weight: bold">f</span>(<span style="color: #333399; font-weight: bold">void</span>) {
+    printf(<span style="background-color: #fff0f0">&quot;f was called</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\n</span><span style="background-color: #fff0f0">&quot;</span>);
+    <span style="color: #008800; font-weight: bold">return</span> <span style="color: #0000DD; font-weight: bold">1</span>;
+}
+
+<span style="color: #333399; font-weight: bold">int</span> <span style="color: #0066BB; font-weight: bold">g</span>(<span style="color: #333399; font-weight: bold">void</span>) {
+    printf(<span style="background-color: #fff0f0">&quot;g was called</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\n</span><span style="background-color: #fff0f0">&quot;</span>);
+    <span style="color: #008800; font-weight: bold">return</span> <span style="color: #0000DD; font-weight: bold">2</span>;
+}
+
+
+<span style="color: #333399; font-weight: bold">int</span> <span style="color: #0066BB; font-weight: bold">h</span>(<span style="color: #333399; font-weight: bold">void</span>) {
+    printf(<span style="background-color: #fff0f0">&quot;h was called</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\n</span><span style="background-color: #fff0f0">&quot;</span>);
+    <span style="color: #008800; font-weight: bold">return</span> <span style="color: #0000DD; font-weight: bold">3</span>;
+}
+</pre></div>
+      <br>
+
+      <h2>What will be printed to stdout when the following line is executed?</h2> 
+      <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;font-size:20px;"><pre style="margin: 0; line-height: 125%"><span style="color: #333399; font-weight: bold">int</span> a <span style="color: #333333">=</span> (f() <span style="color: #333333">+</span> g()) <span style="color: #333333">+</span> h();
+</pre></div>
+
+      
+      
+        <br>
+        <form >
+          <input type="radio" name="choice" value="A1"><br>
+          <samp>f was called</samp><br>
+          <samp>g was called</samp><br>
+          <samp>h was called</samp><br>
+          
+            <br><input type="radio" name="choice" value="A2"><br>
+          <samp>g was called</samp><br>
+          <samp>f was called</samp><br>
+          <samp>h was called</samp><br>
+            <br><input type="radio" name="choice" value="A3"> Either of the above two is possible
+            <br><input type="radio" name="choice" value="A4"> The three sentences can appear in any of the 6 possible orders
+        </form>
+        <br>
+        <!-- Total number of trys: {{cfg.limitFile}} -->
+    </div>
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+
+    <script>
+    var chalID  = window.location.pathname.split('/')[2];
+    var myTimer = setInterval(myTimerFunction, {{hbTimer}});
+
+    function submitLoad(){
+      location.reload()
+    }
+
+    var inputModalConfirm = function (callback) {
+      $("#modal-btn-send").on("click", function () {
+        callback(true);
+        $("#inputDataModal").modal('hide');
+        $("#modal-btn-send").off();
+        $("#modal-btn-cancel").off();
+      });
+      $("#modal-btn-cancel").on("click", function () {
+        callback(false);
+        $("#inputDataModal").modal('hide');
+        $("#modal-btn-send").off();
+        $("#modal-btn-cancel").off();
+      });
+    };
+
+    function submitReport(){
+      var textContent = "";
+      $("#message-text").val("")
+      $("#inputDataModal").modal()
+      inputModalConfirm(function (confirm) {
+        if (confirm) {
+          reportMessage = $("#message-text").val()
+          console.log("YES: " + reportMessage);
+          $.post("./" + chalID + "/report", { "usercontent": textContent, "message":reportMessage })
+            .done(function (data) {
+              $("#testid").html(data);
+            });
+        }
+      });
+    }
+
+    function submitAnswer() {
+      var chalID  = window.location.pathname.split('/')[2];
+      var radios  = document.getElementsByName("choice");
+      var i       = 0;
+      var len     = radios.length;
+      var checked = false;
+      var userAnswer;
+      
+      for( ; i < len; i++ ) {
+         if(radios[i].checked) {
+           checked    = true;
+           userAnswer = radios[i].value;
+           break;
+         }
+      } 
+      if(!checked) {
+        alert("please select choice answer");
+        return;
+      }
+      $.post( "./"+chalID+"/file/solve.html", { "selection": userAnswer })
+       .done(function( retHtmlCode ) {
+         $("#main").html(retHtmlCode);
+       });
+    }
+
+    function myTimerFunction() {
+        $.get( {url:"./"+chalID+"/hints", cache:false}, {"heartbeat":true}, function( data ) {
+            $("#hints").html(data["hints"]);
+        });
+    }
+    </script>
+</body>

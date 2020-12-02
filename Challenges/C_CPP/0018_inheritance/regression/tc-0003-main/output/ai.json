@@ -1,0 +1,8 @@
+[
+    {
+        "tc": "TEST_30",
+        "tag": "NO TAG",
+        "result": "FAIL",
+        "msg": "ERROR: Declaration \"Base *a = new Derived(#,#);\" is missing"
+    }
+]
